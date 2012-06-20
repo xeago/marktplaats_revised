@@ -1,15 +1,37 @@
 package nl.zuyd.marktplaats_revised;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Singleton;
-
-//import org.eclipse.persistence.jpa.JpaEntityManager;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Singleton
-public class Context
+public class DataRepository
 {
+	@PersistenceContext
+	private EntityManager em;
+		
+	/**
+	 * Fetches managed instances of all existing advertisements
+	 * @return
+	 */
+	public List<Advertisement> getAllAdvertisements() {
+		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c", Advertisement.class);
+		return q.getResultList();
+	}
+	
+	/**
+	 * Fetches managed instances of all existing users
+	 * @return
+	 */
+	public List<User> getAllUsers() {
+		TypedQuery<User> q = this.em.createQuery("SELECT u FROM User u", User.class);
+		return q.getResultList();
+	}
+	
+	/*
 	private List<User> users;
 	
 	public List<User> getUsers()
@@ -24,7 +46,7 @@ public class Context
 		return advertenties;
 	}
 	
-	public Context()
+	public DataRepository()
 	{
 		users = new ArrayList<User>();
 		advertenties = new ArrayList<Advertisement>();
@@ -72,5 +94,5 @@ public class Context
 		advertenties.add(a2);
 		advertenties.add(a3);
 	}
-	
+	*/
 }
