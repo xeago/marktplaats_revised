@@ -7,12 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Stateful
 @Entity
-@Table(name="users")
+@Table(name="users",uniqueConstraints=@UniqueConstraint(columnNames = { "id" }))
 public class User
-{		
+{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
@@ -26,6 +27,9 @@ public class User
 	
 	@Column(name="password", nullable=false)
 	private String password;
+	
+	@Column(name="groupname", nullable=false)
+	private String groupname;
 	
 	public String getEmail()
 	{
@@ -65,5 +69,13 @@ public class User
 	public void setUsername(String username)
 	{
 		this.username = username;
+	}
+
+	public String getGroupname() {
+		return groupname;
+	}
+
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
 	}
 }
