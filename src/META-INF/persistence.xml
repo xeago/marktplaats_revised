@@ -4,5 +4,9 @@
 		<class>nl.zuyd.marktplaats_revised.User</class>
 		<class>nl.zuyd.marktplaats_revised.Advertisement</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+            <!-- drop and create tables at deployment -->
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+        </properties>
 	</persistence-unit>
 </persistence>
