@@ -44,7 +44,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{		
-		List<Advertisement> l = dataRepo.getAllAdvertisements();
+		List<Advertisement> l = advertRepo.getAll();
 		
 		// check for query params
 		String s;
@@ -85,7 +85,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Advertisement> l = new DataRepository().getAllAdvertisements();
+		List<Advertisement> l = this.advertRepo.getAll();
 		
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)

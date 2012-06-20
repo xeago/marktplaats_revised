@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.DataRepository;
 import nl.zuyd.marktplaats_revised.User;
+import nl.zuyd.marktplaats_revised.UserRepository;
 
 /**
  * Servlet implementation class UserServlet
@@ -22,16 +23,14 @@ public class UserServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	DataRepository dataRepo;
+	UserRepository userRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UserServlet()
 	{
-	
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -41,7 +40,7 @@ public class UserServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<User> l = dataRepo.getAllUsers();
+		List<User> l = userRepo.getAll();
 		
 		// check for query params
 		String s;
@@ -75,7 +74,7 @@ public class UserServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<User> l = dataRepo.getAllUsers();
+		List<User> l = userRepo.getAll();
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
