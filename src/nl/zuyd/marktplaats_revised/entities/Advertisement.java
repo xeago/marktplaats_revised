@@ -20,16 +20,16 @@ public class Advertisement
 	@Column(name="status")
 	private int status;
 	
-	@Column(name="title")
+	@Column(name="title", nullable=false, length=100)
 	private String title;
 	
-	@Column(name="description")
+	@Column(name="description",length=8000, nullable=false)
 	private String description;
 	
-	@Column(name="date")
+	@Column(name="date", nullable=false, length=20)
 	private String date;
 	
-	@Column(name="price")
+	@Column(name="price", nullable=false, length=40)
 	private String price;
 	
 	public int getId()

@@ -18,13 +18,13 @@ public class User
 	private int id;
 	
 	@Id
-	@Column(name="username")
+	@Column(name="username", nullable=false)
 	private String username;
 	
-	@Column(name="email_address")
+	@Column(name="email_address", nullable=false)
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="password", nullable=false)
 	private String password;
 	
 	public String getEmail()

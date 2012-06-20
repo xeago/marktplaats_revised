@@ -35,7 +35,6 @@ public class PopulateServlet extends HttpServlet {
      */
     public PopulateServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -56,9 +55,9 @@ public class PopulateServlet extends HttpServlet {
 	{
 		 //EntityManager em = this.emf.createEntityManager();
 		 User user = new User();
-		 user.setEmail("Rickvanbodegraven@alalaallal.nl");
-		 user.setPassword("b");
-		 user.setUsername("a");
+		 user.setEmail("rickvanbodegraven@gmail.com");
+		 user.setPassword("rick");
+		 user.setUsername("rick");
 		 
 		 this.em.persist(user);
 		 //this.em.flush();

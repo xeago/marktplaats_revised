@@ -12,7 +12,7 @@
 <div id="container">
 <h1>Marktplaats Revised</h1>
 <ul>
-<c:forEach var="advertisement" items="${Advertisements}"><li><a href="advertisements?id=${advertisement.id}" />  ${advertisement.title}  </a><p>${advertisement.description}</p></li></c:forEach>
+<c:forEach var="advertisement" items="${Advertisements}"><li><a href="advertisements?id=${advertisement.id}">  ${advertisement.title}  </a><p>${advertisement.description}</p></li></c:forEach>
 </ul>
 </div>
 </body>
