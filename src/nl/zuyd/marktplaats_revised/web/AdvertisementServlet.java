@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.Advertisement;
+import nl.zuyd.marktplaats_revised.AdvertisementRepository;
 import nl.zuyd.marktplaats_revised.DataRepository;
 import nl.zuyd.marktplaats_revised.User;
 
@@ -26,7 +27,7 @@ public class AdvertisementServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	DataRepository dataRepo;
+	AdvertisementRepository advertRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
