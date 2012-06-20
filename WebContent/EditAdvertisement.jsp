@@ -11,7 +11,7 @@
 <body>
 <div id="container">
 <h1>Marktplaats Revised</h1>
-<a class="terugLink" href="AdvertisementServlet">Terug</a>
+<a class="terugLink" href="advertisements">Terug</a>
 	<form action="AdvertisementServlet" method="POST">
 	   <input type="hidden" name="save_id" value="${Advertisement.id}" />
 		<div class="FormRow">
