@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 
-
 @Singleton
 public class AdvertisementRepository implements IRepository<Advertisement> 
 {
@@ -26,6 +25,11 @@ public class AdvertisementRepository implements IRepository<Advertisement>
 	public List<Advertisement> getAll()
 	{
 		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c", Advertisement.class);
+		return q.getResultList();
+	}
+	
+	public List<Advertisement> getByTitle(String title) {
+		TypedQuery<Advertisement> q = this.em.createNamedQuery("SELECT c FROM Advertisement c WHERE c.title = " + title, Advertisement.class);
 		return q.getResultList();
 	}
 }
