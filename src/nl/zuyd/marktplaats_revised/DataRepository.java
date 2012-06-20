@@ -1,15 +1,37 @@
 package nl.zuyd.marktplaats_revised;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Singleton;
-
-//import org.eclipse.persistence.jpa.JpaEntityManager;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Singleton
-public class Context
+public class DataRepository
 {
+	@PersistenceContext
+	private EntityManager em;
+		
+	/**
+	 * Fetches managed instances of all existing advertisements
+	 * @return
+	 */
+	public List<Advertisement> getAllAdvertisements() {
+		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c", Advertisement.class);
+		return q.getResultList();
+	}
+	
+	/**
+	 * Fetches managed instances of all existing users
+	 * @return
+	 */
+	public List<User> getAllUsers() {
+		TypedQuery<User> q = this.em.createQuery("SELECT u FROM User u", User.class);
+		return q.getResultList();
+	}
+	
+	/*
 	private List<User> users;
 	
 	public List<User> getUsers()
@@ -24,18 +46,20 @@ public class Context
 		return advertenties;
 	}
 	
-	public Context()
+	public DataRepository()
 	{
 		users = new ArrayList<User>();
 		advertenties = new ArrayList<Advertisement>();
 		
 		User u1 = new User();
 		u1.setId(1);
+		u1.setUsername("test");
 		u1.setEmail("test@test.nl");
 		u1.setPassword("banaan");
 		
 		User u2 = new User();
 		u2.setId(2);
+		u2.setUsername("test2");
 		u2.setEmail("user2@test.nl");
 		u2.setPassword("appel");
 		
@@ -59,7 +83,7 @@ public class Context
 		a2.setAdvertiser(u2);
 		
 		Advertisement a3 = new Advertisement();
-		a3.setId(2);
+		a3.setId(3);
 		a3.setTitle("tuinslang");
 		a3.setDescription("blaat nog meer bla");
 		a3.setDate("6-3-2009");
@@ -70,5 +94,5 @@ public class Context
 		advertenties.add(a2);
 		advertenties.add(a3);
 	}
-	
+	*/
 }

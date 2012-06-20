@@ -56,7 +56,18 @@ public class PopulateServlet extends HttpServlet {
 		 user.setUsername("ROFLMANO");
 		 
 		 this.em.persist(user);
+		 //this.em.flush();
+		 
+		 Advertisement advert = new Advertisement();
+		 advert.setAdvertiser(user);
+		 advert.setDate("20-06-2012");
+		 advert.setDescription("Schitterende managed advert");
+		 advert.setTitle("Titeltje");
+		 
+		 this.em.persist(advert);
 		 this.em.flush();
+		 
+		 
 	}
 	
 	/**

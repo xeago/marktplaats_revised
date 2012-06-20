@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${Advertisement.id}e
+${Advertisement.id} is het id
 </body>
 </html>
