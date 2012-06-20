@@ -28,7 +28,13 @@ public class AdvertisementRepository implements IRepository<Advertisement>
 		return q.getResultList();
 	}
 	
-	public List<Advertisement> getByTitle(String title) {
+	/**
+	 * Find all advertisements where a certain title is matched
+	 * @param title String
+	 * @return
+	 */
+	public List<Advertisement> getByTitle(String title) 
+	{
 		TypedQuery<Advertisement> q = this.em.createNamedQuery("SELECT c FROM Advertisement c WHERE c.title = " + title, Advertisement.class);
 		return q.getResultList();
 	}

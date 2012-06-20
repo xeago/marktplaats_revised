@@ -28,4 +28,14 @@ public class UserRepository implements IRepository<User>
 		TypedQuery<User> q = this.em.createQuery("SELECT c FROM User c", User.class);
 		return q.getResultList();
 	}
+	
+	/**
+	 * Find instances of User differentiated by username
+	 * @param username String
+	 * @return
+	 */
+	public User getByUsername(String username) {
+		TypedQuery<User> q = this.em.createQuery("SELECT c FROM USER c WHERE c.username = " + username, User.class);
+		return q.getSingleResult();
+	}
 }
