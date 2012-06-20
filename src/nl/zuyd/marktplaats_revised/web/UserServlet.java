@@ -53,6 +53,7 @@ public class UserServlet extends HttpServlet
 				if (user.getId() == Integer.parseInt(s))
 					u = user;
 			}
+			
 			request.setAttribute("User", u);
 			this.getServletContext()
 						.getRequestDispatcher("/EditUser.jsp")

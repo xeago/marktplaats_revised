@@ -12,7 +12,8 @@
 <div id="container">
 <h1>Marktplaats Revised</h1>
 <ul>
-<c:forEach var="advertisement" items="${Users}"><li><a href="users?id=${user.id}" />  ${user.username}  </a><p>${user.email}</p></li></c:forEach>
+<c:forEach var="user" items="${Users}">
+	<li><a href="users?id=${user.id}" />  ${user.username}  </a><p>${user.email}</p></li></c:forEach>
 </ul>
 </div>
 </body>
