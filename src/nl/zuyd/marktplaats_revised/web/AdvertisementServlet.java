@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.Advertisement;
+import nl.zuyd.marktplaats_revised.AdvertisementRepository;
 import nl.zuyd.marktplaats_revised.DataRepository;
 import nl.zuyd.marktplaats_revised.User;
 
@@ -26,7 +27,7 @@ public class AdvertisementServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	DataRepository dataRepo;
+	AdvertisementRepository advertRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -43,7 +44,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{		
-		List<Advertisement> l = dataRepo.getAllAdvertisements();
+		List<Advertisement> l = advertRepo.getAll();
 		
 		// check for query params
 		String s;
@@ -84,7 +85,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Advertisement> l = this.dataRepo.getAllAdvertisements();
+		List<Advertisement> l = this.advertRepo.getAll();
 		
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)

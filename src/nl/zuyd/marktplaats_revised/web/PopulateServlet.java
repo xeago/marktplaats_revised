@@ -1,4 +1,4 @@
-package nl.zuyd.marktplaats_revised;
+package nl.zuyd.marktplaats_revised.web;
 
 import java.io.IOException;
 
@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
+
+import nl.zuyd.marktplaats_revised.Advertisement;
+import nl.zuyd.marktplaats_revised.User;
 
 /**
  * Servlet implementation class PopulateServlet

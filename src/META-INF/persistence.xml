@@ -5,8 +5,9 @@
 		<class>nl.zuyd.marktplaats_revised.Advertisement</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-			<property name="eclipselink.ddl-generation.output-mode" value="both"/>
-		</properties>
+            <!-- drop and create tables at deployment -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+        </properties>
 	</persistence-unit>
 </persistence>
