@@ -12,7 +12,7 @@
 <div id="container">
 <h1>Marktplaats Revised</h1>
 <a class="terugLink" href="advertisements">Terug</a>
-	<form action="AdvertisementServlet" method="POST">
+	<form action="advertisements" method="POST">
 	   <input type="hidden" name="save_id" value="${Advertisement.id}" />
 		<div class="FormRow">
 			<div class="FormColumn1">Titel</div> 
@@ -26,15 +26,15 @@
         		<div class="FormColumn1">Beschrijving</div>  
         		<div class="FormColumn2"><textarea class="CommonTextTxt" name="Description">${Advertisement.description}</textarea></div>
         </div>
-    <div class="buttons">
+<div class="buttons">
 		<input type="submit" value="Opslaan">
 	</form>
 
-	<form action="AdvertisementServlet" method="POST">
+	<form action="advertisements" method="POST">
 		<input type="hidden" name="delete_id" value="${Advertisement.id}" />
 		<input type="submit" value="Verwijderen">
 	</form>
-	<form action="AdvertisementServlet" method="POST">
+	<form action="advertisements" method="POST">
 		<input type="hidden" name="sold_id" value="${Advertisement.id}" />
 		<input type="submit" value="Markeren als verkocht">
 	</form>

@@ -31,11 +31,13 @@ public class Context
 		
 		User u1 = new User();
 		u1.setId(1);
+		u1.setUsername("test");
 		u1.setEmail("test@test.nl");
 		u1.setPassword("banaan");
 		
 		User u2 = new User();
 		u2.setId(2);
+		u2.setUsername("test2");
 		u2.setEmail("user2@test.nl");
 		u2.setPassword("appel");
 		

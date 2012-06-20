@@ -18,10 +18,10 @@ import nl.zuyd.marktplaats_revised.Context;
 import nl.zuyd.marktplaats_revised.User;
 
 /**
- * Servlet implementation class AdvertisementServlet
+ * Servlet implementation class UserServlet
  */
-@WebServlet("/advertisements")
-public class AdvertisementServlet extends HttpServlet
+@WebServlet("/users")
+public class UserServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +31,7 @@ public class AdvertisementServlet extends HttpServlet
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdvertisementServlet()
+	public UserServlet()
 	{
 	
 		super();
@@ -45,40 +45,32 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Advertisement> l = context.getAdvertisements();
+		List<User> l = context.getUsers();
 		
 		// check for query params
 		String s;
 		if ((s = request.getParameter("id")) != null)
 		{
-			Advertisement a = null;
-			for (Advertisement advertisement : l)
+			User u = null;
+			for (User user : l)
 			{
-				if (advertisement.getId() == Integer.parseInt(s))
-					a = advertisement;
+				if (user.getId() == Integer.parseInt(s))
+					u = user;
 			}
-			request.setAttribute("Advertisement", a);
-			if (a.getAdvertiser().getId() == 1)
-			{
-				this.getServletContext()
-						.getRequestDispatcher("/EditAdvertisement.jsp")
+			request.setAttribute("User", u);
+			this.getServletContext()
+						.getRequestDispatcher("/EditUser.jsp")
 						.forward(request, response);
-			}
-			else
-			{
-				this.getServletContext()
-						.getRequestDispatcher("/SingleAdvertisement.jsp")
-						.forward(request, response);
-			}
+
 		}
 		else
 		{
 			
 			// else list all advertisements and forward to the
 			// ListAdvertisements.jsp to display all advertisements
-			request.setAttribute("Advertisements", l);
+			request.setAttribute("Users", l);
 			this.getServletContext()
-					.getRequestDispatcher("/ListAdvertisements.jsp")
+					.getRequestDispatcher("/ListUsers.jsp")
 					.forward(request, response);
 		}
 	}
@@ -86,7 +78,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Advertisement> l = context.getAdvertisements();
+		List<User> l = context.getUsers();
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
