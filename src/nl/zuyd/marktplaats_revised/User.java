@@ -1,15 +1,23 @@
 package nl.zuyd.marktplaats_revised;
 
-import javax.persistence.*;
+import javax.ejb.Stateful;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Stateful
 @Entity
 @Table(name="users")
 public class User
 {		
-	@Id	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
+	@Id
 	@Column(name="username")
 	private String username;
 	
@@ -18,7 +26,7 @@ public class User
 	
 	@Column(name="password")
 	private String password;
-		
+	
 	public String getEmail()
 	{
 		return this.email;
