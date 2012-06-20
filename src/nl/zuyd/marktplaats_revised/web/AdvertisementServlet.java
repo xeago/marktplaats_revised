@@ -84,7 +84,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Advertisement> l = new DataRepository().getAllAdvertisements();
+		List<Advertisement> l = this.dataRepo.getAllAdvertisements();
 		
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
@@ -98,7 +98,18 @@ public class AdvertisementServlet extends HttpServlet
 		}
 		else if ((p = request.getParameter("save_id")) != null)
 		{
-			response.getWriter().write(p);
+			Advertisement a = null;
+			//GET BY ID
+			for (Advertisement advertisement : l) {
+				if (advertisement.getId()==Integer.parseInt(p))
+				{
+					a=advertisement;
+				}
+			}
+			
+			if (a != null){
+				//TODO
+			}
 		}
 		else
 		{
