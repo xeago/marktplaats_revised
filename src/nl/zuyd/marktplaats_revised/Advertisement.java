@@ -1,55 +1,104 @@
 package nl.zuyd.marktplaats_revised;
 
-public class Advertisement {
-	private String Title;
-	private int Id;
-	private String Description;
-	private int Status;
-	private String Date;
-	private String Price;
-	private User Advertiser;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="advertisements")
+public class Advertisement
+{
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
+
+	private User advertiser;
 	
+	@Column(name="status")
+	private int status;
 	
-	public User getAdvertiser() {
-		return Advertiser;
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="description")
+	private String description;
+	
+	@Column(name="date")
+	private String date;
+	
+	@Column(name="price")
+	private String price;
+	
+	public int getId()
+	{
+		return this.id;
 	}
-	public void setAdvertiser(User advertiser) {
-		Advertiser = advertiser;
+	
+	public void setId(int id)
+	{
+		this.id = id;
 	}
-	public String getDate() {
-		return Date;
+	
+	public String getTitle()
+	{
+		return title;
 	}
-	public void setDate(String date) {
-		Date = date;
+	
+	public void setTitle(String title)
+	{
+		this.title = title;
 	}
-	public int getStatus() {
-		return Status;
+	
+	public String getDescription()
+	{
+		return description;
 	}
-	public void setStatus(int status) {
-		Status = status;
+	
+	public void setDescription(String description)
+	{
+		this.description = description;
 	}
-	public String getDescription() {
-		return Description;
+	
+	public int getStatus()
+	{
+		return status;
 	}
-	public void setDescription(String description) {
-		Description = description;
+	
+	public void setStatus(int status)
+	{
+		this.status = status;
 	}
-	public int getId() {
-		return Id;
+	
+	public String getDate()
+	{
+		return date;
 	}
-	public void setId(int id) {
-		Id = id;
+	
+	public void setDate(String date)
+	{
+		this.date = date;
 	}
-	public String getTitle() {
-		return Title;
+	
+	public String getPrice()
+	{
+		return price;
 	}
-	public void setTitle(String title) {
-		Title = title;
+	
+	public void setPrice(String price)
+	{
+		this.price = price;
 	}
-	public String getPrice() {
-		return Price;
+	
+	public User getAdvertiser()
+	{
+		return advertiser;
 	}
-	public void setPrice(String price) {
-		Price = price;
+	
+	public void setAdvertiser(User advertiser)
+	{
+		this.advertiser = advertiser;
 	}
 }
