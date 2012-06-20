@@ -1,4 +1,4 @@
-package nl.zuyd.marktplaats_revised;
+package nl.zuyd.marktplaats_revised.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

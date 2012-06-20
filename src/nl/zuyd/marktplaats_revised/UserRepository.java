@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import nl.zuyd.marktplaats_revised.entities.User;
+
+
 @Singleton
 public class UserRepository implements IRepository<User> 
 {

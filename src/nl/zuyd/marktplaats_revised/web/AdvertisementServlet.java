@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nl.zuyd.marktplaats_revised.Advertisement;
-import nl.zuyd.marktplaats_revised.AdvertisementRepository;
 
-import org.eclipse.persistence.annotations.Convert;
+import nl.zuyd.marktplaats_revised.AdvertisementRepository;
+import nl.zuyd.marktplaats_revised.entities.Advertisement;
 
 /**
  * Servlet implementation class AdvertisementServlet
@@ -30,7 +29,7 @@ public class AdvertisementServlet extends HttpServlet
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AdvertisementServlet()
-	{	
+	{
 		super();
 	}
 	
@@ -40,7 +39,7 @@ public class AdvertisementServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
-	{		
+	{
 		List<Advertisement> l = advertRepo.getAll();
 		
 		// check for query params
@@ -50,7 +49,8 @@ public class AdvertisementServlet extends HttpServlet
 			Advertisement advert = this.advertRepo.getById(Integer.parseInt(s));
 			request.setAttribute("Advertisement", advert);
 			
-			// TODO: do  not check for == 1,  but check for == currentUser.getUserId() !!
+			// TODO: do not check for == 1, but check for ==
+			// currentUser.getUserId() !!
 			// or just check if the owner == the current user
 			if (advert.getAdvertiser().getId() == 1)
 			{
@@ -79,14 +79,17 @@ public class AdvertisementServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
-	{		
+	{
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
 			// del
-			Advertisement advertToDelete = this.advertRepo.getById(Integer.parseInt(p));
+			Advertisement advertToDelete = this.advertRepo.getById(Integer
+					.parseInt(p));
 			
-			response.getWriter().write("Advert with title " + advertToDelete.getTitle() + " is going to be deleted");
+			response.getWriter().write(
+					"Advert with title " + advertToDelete.getTitle()
+							+ " is going to be deleted");
 		}
 		else if ((p = request.getParameter("sold_id")) != null)
 		{

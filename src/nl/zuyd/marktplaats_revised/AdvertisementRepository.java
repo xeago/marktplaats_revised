@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import nl.zuyd.marktplaats_revised.entities.Advertisement;
+
+
 @Singleton
 public class AdvertisementRepository implements IRepository<Advertisement> 
 {

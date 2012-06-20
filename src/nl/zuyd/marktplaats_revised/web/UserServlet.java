@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nl.zuyd.marktplaats_revised.User;
+
 import nl.zuyd.marktplaats_revised.UserRepository;
+import nl.zuyd.marktplaats_revised.entities.User;
 
 /**
  * Servlet implementation class UserServlet
