@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nl.zuyd.marktplaats_revised.DataRepository;
 import nl.zuyd.marktplaats_revised.User;
 import nl.zuyd.marktplaats_revised.UserRepository;
 
@@ -73,8 +72,7 @@ public class UserServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
-	{
-		List<User> l = userRepo.getAll();
+	{		
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{

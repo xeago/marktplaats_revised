@@ -18,7 +18,6 @@ public class UserRepository implements IRepository<User>
 	{
 		return this.em.find(User.class, id);
 	}
-	
 
 	@Override
 	public List<User> getAll()

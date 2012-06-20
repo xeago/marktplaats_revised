@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.Advertisement;
 import nl.zuyd.marktplaats_revised.AdvertisementRepository;
-import nl.zuyd.marktplaats_revised.DataRepository;
-import nl.zuyd.marktplaats_revised.User;
+
+import org.eclipse.persistence.annotations.Convert;
 
 /**
  * Servlet implementation class AdvertisementServlet
@@ -50,14 +47,12 @@ public class AdvertisementServlet extends HttpServlet
 		String s;
 		if ((s = request.getParameter("id")) != null)
 		{
-			Advertisement a = null;
-			for (Advertisement advertisement : l)
-			{
-				if (advertisement.getId() == Integer.parseInt(s))
-					a = advertisement;
-			}
-			request.setAttribute("Advertisement", a);
-			if (a.getAdvertiser().getId() == 1)
+			Advertisement advert = this.advertRepo.getById(Integer.parseInt(s));
+			request.setAttribute("Advertisement", advert);
+			
+			// TODO: do  not check for == 1,  but check for == currentUser.getUserId() !!
+			// or just check if the owner == the current user
+			if (advert.getAdvertiser().getId() == 1)
 			{
 				this.getServletContext()
 						.getRequestDispatcher("/EditAdvertisement.jsp")
@@ -84,14 +79,14 @@ public class AdvertisementServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
-	{
-		List<Advertisement> l = this.advertRepo.getAll();
-		
+	{		
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
 			// del
-			response.getWriter().write(p);
+			Advertisement advertToDelete = this.advertRepo.getById(Integer.parseInt(p));
+			
+			response.getWriter().write("Advert with title " + advertToDelete.getTitle() + " is going to be deleted");
 		}
 		else if ((p = request.getParameter("sold_id")) != null)
 		{
