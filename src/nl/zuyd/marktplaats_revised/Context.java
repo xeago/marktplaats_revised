@@ -54,7 +54,7 @@ public class Context {
 		a2.setAdvertiser(u2);
 
 		Advertisement a3 = new Advertisement();
-		a3.setId(2);
+		a3.setId(3);
 		a3.setTitle("tuinslang");
 		a3.setDescription("blaat nog meer bla");
 		a3.setDate("6-3-2009");
