@@ -27,12 +27,12 @@
         		<div class="FormColumn2"><textarea class="CommonTextTxt" name="Description">${Advertisement.description}</textarea></div>
         </div>
     <div class="buttons">
-		<input type="submit" value="Save">
+		<input type="submit" value="Opslaan">
 	</form>
 
 	<form action="AdvertisementServlet" method="POST">
 		<input type="hidden" name="delete_id" value="${Advertisement.id}" />
-		<input type="submit" value="Delete">
+		<input type="submit" value="Verwijderen">
 	</form>
 	<form action="AdvertisementServlet" method="POST">
 		<input type="hidden" name="sold_id" value="${Advertisement.id}" />
