@@ -7,10 +7,54 @@ body
 
 }
 #container
-{	border:solid 1px black;
+{	
+	position:relative;
+	border:solid 1px black;
 	background-color:white;
-	padding:20px;	
+	padding:10px 20px;	
 	border-top:0;
+}
+h1
+{
+	padding:0; margin:0;
+	margin-bottom:20px;
+}
+
+div.buttons
+{
+
+	padding-top:20px;
+	height:30px;
+}
+
+div.buttons input
+{
+	background-repeat:repeat-x;
+	font-family:arial, sans-serif;
+	letter-spacing:0.5pt;
+	background-color:#eee;
+	border:1px solid #ccc;
+	cursor:pointer;
+	color:#000;
+	font-weight:bold;
+	height: 22px;
+	margin:0 5px 0 0;
+	float:left;
+}
+div.buttons input:hover
+{
+	background-color:#ddd;
+}
+
+a.terugLink
+{
+	position:absolute;
+	top:20px;
+	right:20px;
+	width:50px;
+	height:30px;
+	line-height:30px;
+	
 }
 
 /* <FormRows> */
