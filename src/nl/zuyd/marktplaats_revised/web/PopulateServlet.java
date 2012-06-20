@@ -57,8 +57,8 @@ public class PopulateServlet extends HttpServlet {
 		 //EntityManager em = this.emf.createEntityManager();
 		 User user = new User();
 		 user.setEmail("Rickvanbodegraven@alalaallal.nl");
-		 user.setPassword("lalalala");
-		 user.setUsername("ROFLMANO");
+		 user.setPassword("b");
+		 user.setUsername("a");
 		 
 		 this.em.persist(user);
 		 //this.em.flush();
