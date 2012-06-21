@@ -1,3 +1,4 @@
+ALTER TABLE users DROP CONSTRAINT UNQ_users_0
 ALTER TABLE advertisements DROP CONSTRAINT dvrtsmntDVRTSRsrnm
 DROP TABLE users
 DROP TABLE advertisements

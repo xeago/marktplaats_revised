@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import nl.zuyd.marktplaats_revised.UserRepository;
 import nl.zuyd.marktplaats_revised.entities.User;
+import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
 /**
  * Servlet implementation class UserServlet
@@ -23,7 +22,7 @@ public class UserServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	UserRepository userRepo;
+	IUserRepository userRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()

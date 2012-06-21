@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import nl.zuyd.marktplaats_revised.AdvertisementRepository;
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
+import nl.zuyd.marktplaats_revised.repositories.IAdvertisementRepository;
 
 /**
  * Servlet implementation class AdvertisementServlet
  */
-@WebServlet("/advertisements")
+@WebServlet("/advertisements")  
 public class AdvertisementServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	AdvertisementRepository advertRepo;
+	IAdvertisementRepository advertRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()

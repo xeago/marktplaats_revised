@@ -1,7 +1,8 @@
-package nl.zuyd.marktplaats_revised;
+package nl.zuyd.marktplaats_revised.repositories;
 
 import java.util.List;
 
+import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +11,8 @@ import javax.persistence.TypedQuery;
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 
 @Singleton
-public class AdvertisementRepository implements IRepository<Advertisement> 
+@Local(IAdvertisementRepository.class)
+public class AdvertisementRepository implements IAdvertisementRepository 
 {
 	@PersistenceContext
 	private EntityManager em;
