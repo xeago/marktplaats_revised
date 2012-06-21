@@ -96,7 +96,18 @@ public class AdvertisementServlet extends HttpServlet
 		}
 		else if ((p = request.getParameter("save_id")) != null)
 		{
-			response.getWriter().write(p);
+			Advertisement a = null;
+			//GET BY ID
+			for (Advertisement advertisement : l) {
+				if (advertisement.getId()==Integer.parseInt(p))
+				{
+					a=advertisement;
+				}
+			}
+			
+			if (a != null){
+				//TODO
+			}
 		}
 		else
 		{
