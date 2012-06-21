@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name="users",uniqueConstraints=@UniqueConstraint(columnNames = { "id" }))
 public class User
 {
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
 	
@@ -29,7 +29,7 @@ public class User
 	private String password;
 	
 	@Column(name="groupname", nullable=false)
-	private String groupname;
+	private String groupname = "USER";
 	
 	public String getEmail()
 	{
@@ -73,9 +73,5 @@ public class User
 
 	public String getGroupname() {
 		return groupname;
-	}
-
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
 	}
 }

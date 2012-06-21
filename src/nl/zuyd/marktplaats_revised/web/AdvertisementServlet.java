@@ -47,6 +47,14 @@ public class AdvertisementServlet extends HttpServlet
 		{
 			Advertisement advert = this.advertRepo.getById(Integer.parseInt(s));
 			request.setAttribute("Advertisement", advert);
+						
+			if (advert == null) {
+				request.setAttribute("Advertisements", advertRepo.getAll());
+				
+				this.getServletContext()
+						.getRequestDispatcher("/ListAdvertisements.jsp")
+						.forward(request, response);
+			}
 			
 			// TODO: do not check for == 1, but check for ==
 			// currentUser.getUserId() !!

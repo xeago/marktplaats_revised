@@ -57,7 +57,7 @@ public class PopulateServlet extends HttpServlet {
 		 User user = new User();
 		 user.setEmail("rickvanbodegraven@gmail.com");
 		 user.setPassword("rick");
-		 user.setUsername("rick");
+		 user.setUsername("rickje2");
 		 
 		 this.em.persist(user);
 		 //this.em.flush();
@@ -67,6 +67,7 @@ public class PopulateServlet extends HttpServlet {
 		 advert.setDate("20-06-2012");
 		 advert.setDescription("Schitterende managed advert");
 		 advert.setTitle("Titeltje");
+		 advert.setPrice("GRATIES");
 		 
 		 this.em.persist(advert);
 		 this.em.flush();
