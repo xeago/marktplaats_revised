@@ -95,17 +95,11 @@ public class AdvertisementServlet extends HttpServlet
 			response.getWriter().write(p);
 		}
 		else if ((p = request.getParameter("save_id")) != null)
-		{
-			Advertisement a = null;
-			//GET BY ID
-			for (Advertisement advertisement : l) {
-				if (advertisement.getId()==Integer.parseInt(p))
-				{
-					a=advertisement;
-				}
-			}
+		{			
+			Advertisement advertToDelete = this.advertRepo.getById(Integer
+					.parseInt(p));
 			
-			if (a != null){
+			if (advertToDelete != null){
 				//TODO
 			}
 		}
