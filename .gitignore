@@ -29,6 +29,9 @@ login.properties
 # PDT-specific
 .buildpath
 
+# nO SQL
+*.sql
+
 
 #################
 ## Visual Studio
