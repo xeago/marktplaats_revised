@@ -10,6 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import nl.zuyd.marktplaats_revised.entities.User;
@@ -46,7 +50,7 @@ public class RegistratieServlet extends HttpServlet {
 		
 		
 	}
-
+	
 	
 	public void RegistrateUser(HttpServletRequest request)
 	{
@@ -70,21 +74,26 @@ public class RegistratieServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			
+			System.out.print("TESWT");
 			this.utx.begin();
 			RegistrateUser(request);
-			this.utx.commit();
 		}
 		catch (Exception ex) {
 			response.getWriter().write(ex.getMessage().toString());
 		}
-
-			
+		finally {
+			try {
+				this.utx.commit();
+			} catch (SecurityException | IllegalStateException
+					| RollbackException | HeuristicMixedException
+					| HeuristicRollbackException | SystemException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		 this.getServletContext()
 		 	.getRequestDispatcher("/login.jsp").forward(request, response);
-
-
-
 	}
 
 }
