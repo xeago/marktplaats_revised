@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="container">
-		<h1>Marktplaats Revised</h1>
+<%@include file="header.jsp" %>
+
 		<a class="terugLink" href="users">Terug</a>
 		<form action="users" method="POST">
 			<input type="hidden" name="save_id" value="${User.id}" />
@@ -49,6 +41,5 @@
 			<input type="hidden" name="delete_id" value="${User.id}" /> <input
 				type="submit" value="Verwijderen">
 		</form>
-	</div>
-</body>
-</html>
+
+<%@include file="footer.jsp" %>

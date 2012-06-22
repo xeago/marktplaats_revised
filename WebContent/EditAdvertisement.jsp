@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="container">
-		<h1>Marktplaats Revised</h1>
+
+<%@include file="header.jsp" %>
+
 		<a class="terugLink" href="advertisements">Terug</a>
 		<form action="advertisements" method="POST">
 			<input type="hidden" name="save_id" value="${Advertisement.id}" />
@@ -44,6 +37,5 @@
 			<input type="hidden" name="sold_id" value="${Advertisement.id}" /> <input
 				type="submit" value="Markeren als verkocht">
 		</form>
-	</div>
-</body>
-</html>
+		
+<%@include file="footer.jsp" %>
