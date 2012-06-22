@@ -32,7 +32,7 @@
 					<textarea class="CommonTextTxt" name="Description"></textarea>
 				</div>
 			</div>
-			<input type="submit" name="AddAdvertisementServlet" value="Opslaan" method="POST"/>
+			<input type="submit" name="AddAdvertisement" value="Opslaan" />
 		</form>
 	</div>
 </body>

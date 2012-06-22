@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-<div>
+	pageEncoding="ISO-8859-1"%><%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="header.jsp"%>
 <h1>${Advertisement.title} - ${Advertisement.price}</h1>
-Adverteerder: ${Advertisement.advertiser.username}, ${Advertisement.advertiser.email}, ${Advertisement.advertiser.woonplaats}.
+
+Adverteerder: 
+${Advertisement.advertiser.username},
+${Advertisement.advertiser.email},
+${Advertisement.advertiser.woonplaats}.
+
 <p>${Advertisement.description}</p>
-<a href="mailto:${Advertisement.advertiser.email}">Neem contact op</a>
+
+<a href="mailto:${Advertisement.advertiser.email}?subject=Reactie via marktplaats_revised op '${Advertisement.title}'">Neem contact op</a>
 </div>
 </body>
 </html>

@@ -3,20 +3,15 @@ package nl.zuyd.marktplaats_revised.web;
 import java.io.IOException;
 import java.util.Date;
 
-import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.entities.User;
-import nl.zuyd.marktplaats_revised.repositories.AdvertisementRepository;
 import nl.zuyd.marktplaats_revised.repositories.IAdvertisementRepository;
 import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
@@ -52,11 +47,11 @@ public class AddAdvertisementServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		AddAdvertisement(request);		
-		 this.getServletContext()
-		 	.getRequestDispatcher("/advertisements").forward(request, response);
-
+		AddAdvertisement(request);
+		
+		this.getServletContext()
+			.getRequestDispatcher("/advertisements")
+			.forward(request, response);
 	}
 	
 	public void AddAdvertisement(HttpServletRequest request)
