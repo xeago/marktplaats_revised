@@ -11,4 +11,5 @@ public interface IUserRepository
 {
 	User getById(int id);
 	List<User> getAll();
+	User getByUsername(String username);
 }

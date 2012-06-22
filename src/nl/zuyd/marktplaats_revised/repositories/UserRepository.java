@@ -35,8 +35,10 @@ public class UserRepository implements IUserRepository
 	 * @param username String
 	 * @return
 	 */
+	@Override
 	public User getByUsername(String username) {
-		TypedQuery<User> q = this.em.createQuery("SELECT c FROM USER c WHERE c.username = " + username, User.class);
-		return q.getSingleResult();
+		//TypedQuery<User> q = this.em.createQuery("SELECT c FROM USER c WHERE c.username = " + username, User.class);
+		//return q.getSingleResult();
+		return this.em.find(User.class, username);
 	}
 }
