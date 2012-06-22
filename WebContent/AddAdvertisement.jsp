@@ -11,7 +11,7 @@
 	<div id="container">
 		<h1>Marktplaats Revised</h1>
 		<a class="terugLink" href="advertisements">Terug</a>
-		<form action="AddAdvertisement.jsp" method="POST">
+		<form action="AddAdvertisementServlet" method="POST">
 			<div class="FormRow">
 				<div class="FormColumn1">Titel</div>
 				<div class="FormColumn2">

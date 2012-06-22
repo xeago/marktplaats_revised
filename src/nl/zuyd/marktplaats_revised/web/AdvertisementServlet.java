@@ -116,7 +116,7 @@ public class AdvertisementServlet extends HttpServlet
 		}
 		else
 		{
-			super.doPost(request, response);
+			doGet(request, response);
 		}
 	}
 }

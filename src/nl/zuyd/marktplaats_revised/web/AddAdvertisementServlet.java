@@ -18,8 +18,8 @@ import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 /**
  * Servlet implementation class AddAdvertisement
  */
-@WebServlet("/AddAdvertisement")
-public class AddAdvertisement extends HttpServlet {
+@WebServlet("/AddAdvertisementServlet")
+public class AddAdvertisementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -31,7 +31,7 @@ public class AddAdvertisement extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddAdvertisement() {
+    public AddAdvertisementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

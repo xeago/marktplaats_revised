@@ -6,8 +6,7 @@
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
             <!-- drop and create tables at deployment -->
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
-            <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+            <property name="eclipselink.ddl-generation" value="none"/>
         </properties>
 	</persistence-unit>
 </persistence>
