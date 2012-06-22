@@ -29,6 +29,14 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	}	
 
 	@Override
+	public void deleteAdvertisement(Advertisement a)
+	{
+		em.remove(a);
+		em.flush();
+		System.out.print("hier");
+	}	
+	
+	@Override
 	public List<Advertisement> getAll()
 	{
 		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c", Advertisement.class);

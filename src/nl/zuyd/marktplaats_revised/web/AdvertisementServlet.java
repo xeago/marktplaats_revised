@@ -95,10 +95,14 @@ public class AdvertisementServlet extends HttpServlet
 			// del
 			Advertisement advertToDelete = this.advertRepo.getById(Integer
 					.parseInt(p));
-			
-			response.getWriter().write(
-					"Advert with title " + advertToDelete.getTitle()
-							+ " is going to be deleted");
+			if (advertToDelete.getAdvertiser().getUsername()==request.getUserPrincipal().getName())
+			{
+				response.getWriter().write(
+						"Advert with title " + advertToDelete.getTitle()
+								+ " is going to be deleted");
+				advertRepo.deleteAdvertisement(advertToDelete);
+				
+			}
 		}
 		else if ((p = request.getParameter("sold_id")) != null)
 		{
@@ -106,10 +110,10 @@ public class AdvertisementServlet extends HttpServlet
 		}
 		else if ((p = request.getParameter("save_id")) != null)
 		{			
-			Advertisement advertToDelete = this.advertRepo.getById(Integer
+			Advertisement advertToSave = this.advertRepo.getById(Integer
 					.parseInt(p));
 			
-			if (advertToDelete != null){
+			if (advertToSave != null){
 				//TODO
 				
 			}

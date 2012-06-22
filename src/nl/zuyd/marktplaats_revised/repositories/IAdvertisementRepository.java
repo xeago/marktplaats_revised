@@ -13,4 +13,5 @@ public interface IAdvertisementRepository
 	List<Advertisement> getAll();
 	void AddAdvertisement(Advertisement u);
 	List<Advertisement> getByTitle(String title);
+	void deleteAdvertisement(Advertisement a);
 }
