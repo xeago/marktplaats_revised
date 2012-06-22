@@ -3,6 +3,7 @@
 	uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="header.jsp"%>
 
+<a href="AddAdvertisement.jsp">Voeg een advertentie toe</a>
 
 <ul>
 	<c:forEach var="advertisement" items="${Advertisements}">
