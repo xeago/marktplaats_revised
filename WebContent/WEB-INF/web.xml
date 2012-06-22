@@ -33,7 +33,7 @@
     <display-name>SecurityConstraint</display-name>
     <web-resource-collection>
       <web-resource-name>register</web-resource-name>
-      <url-pattern>/Registratie.jsp</url-pattern>
+      <url-pattern>/signup.jsp</url-pattern>
     </web-resource-collection>
     <user-data-constraint>
       <transport-guarantee>NONE</transport-guarantee>
