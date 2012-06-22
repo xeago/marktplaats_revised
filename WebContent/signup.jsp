@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="RegistratieServlet" method=POST>
+<form action="signupServlet" method=POST>
     <p><strong>Please Enter Your User Name: </strong>
     <input type="text" name="u_username" size="25">
     <p><p><strong>Please Enter Your Password: </strong>

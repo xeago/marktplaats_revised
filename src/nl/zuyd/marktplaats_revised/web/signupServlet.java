@@ -23,8 +23,8 @@ import nl.zuyd.marktplaats_revised.entities.User;
 /**
  * Servlet implementation class RegistratieServlet
  */
-@WebServlet("/RegistratieServlet")
-public class RegistratieServlet extends HttpServlet {
+@WebServlet("/signupServlet")
+public class signupServlet extends HttpServlet {
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -37,7 +37,7 @@ public class RegistratieServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistratieServlet() {
+    public signupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

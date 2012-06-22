@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.repositories.IAdvertisementRepository;
+import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
 /**
  * Servlet implementation class AdvertisementServlet
@@ -23,6 +24,8 @@ public class AdvertisementServlet extends HttpServlet
 	
 	@EJB
 	IAdvertisementRepository advertRepo;
+	@EJB
+	IUserRepository userRepo;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -56,10 +59,8 @@ public class AdvertisementServlet extends HttpServlet
 						.forward(request, response);
 			}
 			
-			// TODO: do not check for == 1, but check for ==
-			// currentUser.getUserId() !!
 			// or just check if the owner == the current user
-			if (advert.getAdvertiser().getId() == 1)
+			if (advert.getAdvertiser().getId() == userRepo.getById(request.getUserPrincipal().getName()).getId())
 			{
 				this.getServletContext()
 						.getRequestDispatcher("/EditAdvertisement.jsp")
