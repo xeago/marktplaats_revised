@@ -12,67 +12,56 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
 
-
-import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.entities.User;
 
+
+
 /**
- * Servlet implementation class PopulateServlet
+ * Servlet implementation class RegistratieServlet
  */
-@WebServlet("/PopulateDB")
-public class PopulateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       	
+@WebServlet("/RegistratieServlet")
+public class RegistratieServlet extends HttpServlet {
+	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Resource 
 	private UserTransaction utx; 
-		
+	
+	private static final long serialVersionUID = 1L;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PopulateServlet() {
+    public RegistratieServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			this.utx.begin();
-			this.PopulateDb(); // populate the DB with some random stuff
-			this.utx.commit();
-		}
-		catch (Exception ex) {
-			response.getWriter().write(ex.getMessage().toString());
-		}
+		// TODO Auto-generated method stub
+		
+		
 	}
 
-	public void PopulateDb()
+	
+	public void RegistrateUser(HttpServletRequest request)
 	{
-		 //EntityManager em = this.emf.createEntityManager();
+		//EntityManager em = this.emf.createEntityManager();
+		
+		
+		
 		 User user = new User();
-		 user.setEmail("rickvanbodegraven@gmail.com");
-		 user.setPassword("rick");
-		 user.setUsername("rickje2");
+		 user.setEmail(request.getParameter("u_email"));
+		 user.setPassword(request.getParameter("u_email"));
+		 user.setUsername(request.getParameter("u_username"));
+		 
 		 
 		 this.em.persist(user);
-		 //this.em.flush();
-		 
-		 Advertisement advert = new Advertisement();
-		 advert.setAdvertiser(user);
-		 advert.setDate("20-06-2012");
-		 advert.setDescription("Schitterende managed advert");
-		 advert.setTitle("Titeltje");
-		 advert.setPrice("GRATIES");
-		 
-		 this.em.persist(advert);
 		 this.em.flush();
-		 
-		 
-		 
 	}
 	
 	/**
@@ -80,6 +69,22 @@ public class PopulateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		try {
+			
+			this.utx.begin();
+			RegistrateUser(request);
+			this.utx.commit();
+		}
+		catch (Exception ex) {
+			response.getWriter().write(ex.getMessage().toString());
+		}
+
+			
+		 this.getServletContext()
+		 	.getRequestDispatcher("/login.jsp").forward(request, response);
+
+
+
 	}
 
 }

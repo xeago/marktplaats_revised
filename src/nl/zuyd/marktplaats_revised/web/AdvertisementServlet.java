@@ -87,6 +87,7 @@ public class AdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
+		List<Advertisement> l = advertRepo.getAll();
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
