@@ -2,13 +2,11 @@ package nl.zuyd.marktplaats_revised.repositories;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.UserTransaction;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 
@@ -19,8 +17,8 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@PersistenceContext
 	private EntityManager em;
 	
-	@Resource 
-	private UserTransaction utx; 
+	//@Resource 
+	//private UserTransaction utx; 
 	
 	@Override
 	public Advertisement getById(int id)
@@ -48,16 +46,29 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	}
 
 	@Override
-	public void AddAdvertisement(Advertisement add) {
+	public void addAdvertisement(Advertisement add) {
 		//try {
 		//	utx.begin();
 			em.persist(add);
-		//	utx.commit();
+			this.em.flush();
+			//utx.commit();
 		//} catch (SecurityException | IllegalStateException
 		//		| NotSupportedException | SystemException | RollbackException
 		//		| HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
 		//	e.printStackTrace();
 		//}
+	}
+
+	@Override
+	public void deleteAdvertisement(Advertisement advert)
+	{
+		this.em.remove(advert);
+		this.em.flush();
+	}
+
+	@Override
+	public void saveAdvertisement(Advertisement advert)
+	{
+		this.em.flush();		
 	}
 }

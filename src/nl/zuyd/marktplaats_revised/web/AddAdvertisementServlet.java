@@ -74,7 +74,7 @@ public class AddAdvertisementServlet extends HttpServlet {
 		 add.setAdvertiser(u);
 		 
 		 //add to repo
-		advertRepo.AddAdvertisement(add);
+		advertRepo.addAdvertisement(add);
 	}
 
 }
