@@ -18,7 +18,7 @@ public class UserRepository implements IUserRepository
 	private EntityManager em;
 	
 	@Override
-	public User getById(int id)
+	public User getById(String id) // please do remember the PK is a string..
 	{
 		return this.em.find(User.class, id);
 	}
@@ -35,8 +35,10 @@ public class UserRepository implements IUserRepository
 	 * @param username String
 	 * @return
 	 */
+	@Override
 	public User getByUsername(String username) {
-		TypedQuery<User> q = this.em.createQuery("SELECT c FROM USER c WHERE c.username = " + username, User.class);
-		return q.getSingleResult();
+		return this.getById(username);
+		//TypedQuery<User> q = this.em.createQuery("SELECT c FROM User c WHERE c.username = " + username, User.class);
+		//return q.getSingleResult();
 	}
 }

@@ -9,6 +9,7 @@ import nl.zuyd.marktplaats_revised.entities.User;
 @Local
 public interface IUserRepository
 {
-	User getById(int id);
+	User getById(String id);
 	List<User> getAll();
+	User getByUsername(String username);
 }
