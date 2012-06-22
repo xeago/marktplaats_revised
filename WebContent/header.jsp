@@ -8,5 +8,8 @@
 		<title>Markplaats Revised</title>
 	</head>
 	<body>
+		<div id="header">
+			<a href="/marktplaats_revised">Voorpagina</a>
+		</div>
 		<div id="container">
 			<h1>Marktplaats Revised</h1>

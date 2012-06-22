@@ -1,200 +1,203 @@
-body
-{
-	background-color:#eee;
-	font-family:Arial;
-	width:940px;
-	margin:0 auto;
-
-}
-#container
-{	
-	position:relative;
-	border:solid 1px black;
-	background-color:white;
-	padding:10px 20px;	
-	border-top:0;
-}
-h1
-{
-	padding:0; margin:0;
-	margin-bottom:20px;
+body {
+	background-color: #eee;
+	font-family: Arial;
+	width: 940px;
+	margin: 0 auto;
 }
 
-div.buttons
-{
-
-	padding-top:20px;
-	height:30px;
+#header, #footer {
+	position: relative;
+	border: solid 1px black;
+	background-color: white;
+	padding: 10px 20px;
+	border-top: 0;
 }
 
-div.buttons input
-{
-	background-repeat:repeat-x;
-	font-family:arial, sans-serif;
-	letter-spacing:0.5pt;
-	background-color:#eee;
-	border:1px solid #ccc;
-	cursor:pointer;
-	color:#000;
-	font-weight:bold;
+#footer {
+	text-align: center;
+}
+
+#container {
+	position: relative;
+	border: solid 1px black;
+	background-color: white;
+	padding: 10px 20px;
+	border-top: 0;
+}
+
+h1 {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+div.buttons {
+	padding-top: 20px;
+	height: 30px;
+}
+
+div.buttons input {
+	background-repeat: repeat-x;
+	font-family: arial, sans-serif;
+	letter-spacing: 0.5pt;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	color: #000;
+	font-weight: bold;
 	height: 22px;
-	margin:0 5px 0 0;
-	float:left;
-}
-div.buttons input:hover
-{
-	background-color:#ddd;
+	margin: 0 5px 0 0;
+	float: left;
 }
 
-a.terugLink
-{
-	position:absolute;
-	top:20px;
-	right:20px;
-	width:50px;
-	height:30px;
-	line-height:30px;
-	
+div.buttons input:hover {
+	background-color: #ddd;
+}
+
+a.terugLink {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
 }
 
 /* <FormRows> */
-div.FormRow
-{
-	clear:left;
-	margin-bottom:3px;
+div.FormRow {
+	clear: left;
+	margin-bottom: 3px;
 	min-height: 20px;
-	padding-bottom:3px;
-}
-div.RodeTekst
-{
-    color: Red;
-}
-div.FormRowNB
-{
-	margin-bottom:5px;
-	padding-bottom:5px;
-}
-.FormColumn1
-{
-	display:block;
-	float:left;
-	line-height:18px;
-	}
-.FormColumn1B
-{
-	display:block;
-	float:left;
-	line-height:18px;
-	width:190px;
-}
-.FormColumn1C
-{
-	display:block;
-	float:left;
-	line-height:18px;
-	width:60px;
+	padding-bottom: 3px;
 }
 
-.FormColumn1 em, .FormColumn1B em
-{
-	color:#f00000;
-}
-.FormColumn2
-{
-	line-height:18px;
-	margin-left:180px;
-}
-.FormColumn2B
-{
-	line-height:18px;
-	margin-left:190px;
+div.RodeTekst {
+	color: Red;
 }
 
-.CommonTextXXXL
-{
-	width:461px;
-    max-width: 100%;
+div.FormRowNB {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
 }
-.CommonTextXXL
-{
-	width:296px;
-    max-width: 100%;
+
+.FormColumn1 {
+	display: block;
+	float: left;
+	line-height: 18px;
 }
-.CommonTextXL
-{
-	width:216px;
-    max-width: 100%;
+
+.FormColumn1B {
+	display: block;
+	float: left;
+	line-height: 18px;
+	width: 190px;
 }
-.CommonTextL
-{
-	width:196px;
-    max-width: 100%;
+
+.FormColumn1C {
+	display: block;
+	float: left;
+	line-height: 18px;
+	width: 60px;
 }
-.CommonTextML
-{
-    width:166px;
-    max-width: 100%;
+
+.FormColumn1 em,.FormColumn1B em {
+	color: #f00000;
 }
-.CommonTextXM
-{
-	width:136px;
-    max-width: 100%;
+
+.FormColumn2 {
+	line-height: 18px;
+	margin-left: 180px;
 }
-.CommonTextM
-{
-	width:116px;
-    max-width: 100%;
+
+.FormColumn2B {
+	line-height: 18px;
+	margin-left: 190px;
 }
-.CommonTextSM
-{
-	width:96px;
-    max-width: 100%;
+
+.CommonTextXXXL {
+	width: 461px;
+	max-width: 100%;
 }
-.CommonTextSMM
-{
-    width:70px;
-    max-width: 100%;
+
+.CommonTextXXL {
+	width: 296px;
+	max-width: 100%;
 }
-.CommonTextS
-{
-	width:66px;
-    max-width: 100%;
+
+.CommonTextXL {
+	width: 216px;
+	max-width: 100%;
 }
-.CommonTextXS
-{
-	width:60px;
-    max-width: 100%;
+
+.CommonTextL {
+	width: 196px;
+	max-width: 100%;
 }
-.CommonTextTxt
-{
-	height:194px;
-	width:456px;
-    max-width: 100%;
+
+.CommonTextML {
+	width: 166px;
+	max-width: 100%;
 }
-.BreedteS
-{
-    width: 40px;
-    max-width: 100%;
+
+.CommonTextXM {
+	width: 136px;
+	max-width: 100%;
 }
-.BreedteM
-{
-    width: 80px;
-    max-width: 100%;
+
+.CommonTextM {
+	width: 116px;
+	max-width: 100%;
 }
-.BreedteL
-{
-    width: 160px;
-    max-width: 100%;
+
+.CommonTextSM {
+	width: 96px;
+	max-width: 100%;
 }
-.BreedteXL
-{
-    width: 280px;
-    max-width: 100%;
+
+.CommonTextSMM {
+	width: 70px;
+	max-width: 100%;
 }
-.BreedteXXL
-{
-    width: 400px;
-    max-width: 100%;
+
+.CommonTextS {
+	width: 66px;
+	max-width: 100%;
+}
+
+.CommonTextXS {
+	width: 60px;
+	max-width: 100%;
+}
+
+.CommonTextTxt {
+	height: 194px;
+	width: 456px;
+	max-width: 100%;
+}
+
+.BreedteS {
+	width: 40px;
+	max-width: 100%;
+}
+
+.BreedteM {
+	width: 80px;
+	max-width: 100%;
+}
+
+.BreedteL {
+	width: 160px;
+	max-width: 100%;
+}
+
+.BreedteXL {
+	width: 280px;
+	max-width: 100%;
+}
+
+.BreedteXXL {
+	width: 400px;
+	max-width: 100%;
 }
 
 /* </FormRows> */
