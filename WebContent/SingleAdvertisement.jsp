@@ -12,7 +12,7 @@
 <h1>${Advertisement.title} - ${Advertisement.price}</h1>
 Adverteerder: ${Advertisement.advertiser.username}, ${Advertisement.advertiser.email}, ${Advertisement.advertiser.woonplaats}.
 <p>${Advertisement.description}</p>
-<a href="mailto:"${Advertisement.advertiser.email}">Neem contact op</a>
+<a href="mailto:${Advertisement.advertiser.email}">Neem contact op</a>
 </div>
 </body>
 </html>
