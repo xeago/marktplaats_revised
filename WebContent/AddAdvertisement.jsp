@@ -11,7 +11,7 @@
 	<div id="container">
 		<h1>Marktplaats Revised</h1>
 		<a class="terugLink" href="advertisements">Terug</a>
-		<form action="AddAdvertisement" method="POST">
+		<form action="AddAdvertisementServlet" method="POST">
 			<div class="FormRow">
 				<div class="FormColumn1">Titel</div>
 				<div class="FormColumn2">
@@ -32,7 +32,7 @@
 					<textarea class="CommonTextTxt" name="Description"></textarea>
 				</div>
 			</div>
-			<input type="submit" name="AddAdvertisement" value="Opslaan" method="POST"/>
+			<input type="submit" name="AddAdvertisementServlet" value="Opslaan" method="POST"/>
 		</form>
 	</div>
 </body>
