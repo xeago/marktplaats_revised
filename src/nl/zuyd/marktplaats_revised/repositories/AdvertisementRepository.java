@@ -27,6 +27,14 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	}	
 
 	@Override
+	public void deleteAdvertisement(Advertisement a)
+	{
+		Object o = em.find(a.getClass(), a.getId()); // triple wtf
+		em.remove(o);
+		em.flush();
+	}	
+	
+	@Override
 	public List<Advertisement> getAll()
 	{
 		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c", Advertisement.class);
@@ -57,14 +65,6 @@ public class AdvertisementRepository implements IAdvertisementRepository
 		//		| HeuristicMixedException | HeuristicRollbackException e) {
 		//	e.printStackTrace();
 		//}
-	}
-
-	@Override
-	public void deleteAdvertisement(Advertisement advert)
-	{
-		this.em.merge(advert);
-		this.em.remove(advert);
-		this.em.flush();
 	}
 
 	@Override
