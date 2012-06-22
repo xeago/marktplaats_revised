@@ -62,6 +62,7 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@Override
 	public void deleteAdvertisement(Advertisement advert)
 	{
+		this.em.merge(advert);
 		this.em.remove(advert);
 		this.em.flush();
 	}
