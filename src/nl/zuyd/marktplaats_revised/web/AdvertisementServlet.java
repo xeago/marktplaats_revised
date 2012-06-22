@@ -101,6 +101,8 @@ public class AdvertisementServlet extends HttpServlet
 				response.getWriter().write(
 						"Advert with title " + advertToDelete.getTitle()
 								+ " is going to be deleted");
+				
+				// TODO: send the user to /advertisements or something ?
 				advertRepo.deleteAdvertisement(advertToDelete);
 			}
 		}
@@ -115,6 +117,12 @@ public class AdvertisementServlet extends HttpServlet
 			
 			if (advertToUpdate != null){
 				//TODO SAVE THE UPDATED ADVERT
+				/*
+				advertToUpdate.setTitle(title);
+				advertToUpdate.setDescription(description);
+				advertToUpdate.setPrice(price);
+				*/
+				this.advertRepo.saveAdvertisement(advertToUpdate);			
 				
 			}
 		}

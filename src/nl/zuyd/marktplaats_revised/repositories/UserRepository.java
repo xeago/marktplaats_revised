@@ -54,13 +54,15 @@ public class UserRepository implements IUserRepository
 	@Override
 	public void deleteUser(User user)
 	{
-		this.em.remove(user);
+		user = this.em.merge(user); // first merge
+		this.em.remove(user); // then remove
 		this.em.flush();		
 	}
 
 	@Override
 	public void saveUser(User user)
 	{
+		user = this.em.merge(user);
 		this.em.flush();		
 	}
 }
