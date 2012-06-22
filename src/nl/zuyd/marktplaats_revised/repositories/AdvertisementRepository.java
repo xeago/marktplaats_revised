@@ -2,13 +2,21 @@ package nl.zuyd.marktplaats_revised.repositories;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
+import nl.zuyd.marktplaats_revised.entities.User;
 
 @Singleton
 @Local(IAdvertisementRepository.class)
@@ -16,6 +24,9 @@ public class AdvertisementRepository implements IAdvertisementRepository
 {
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Resource 
+	private UserTransaction utx; 
 	
 	@Override
 	public Advertisement getById(int id)
@@ -35,9 +46,24 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	 * @param title String
 	 * @return
 	 */
+	@Override
 	public List<Advertisement> getByTitle(String title) 
 	{
 		TypedQuery<Advertisement> q = this.em.createNamedQuery("SELECT c FROM Advertisement c WHERE c.title = " + title, Advertisement.class);
 		return q.getResultList();
+	}
+
+	@Override
+	public void AddAdvertisement(Advertisement add) {
+		//try {
+		//	utx.begin();
+			em.persist(add);
+		//	utx.commit();
+		//} catch (SecurityException | IllegalStateException
+		//		| NotSupportedException | SystemException | RollbackException
+		//		| HeuristicMixedException | HeuristicRollbackException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//}
 	}
 }

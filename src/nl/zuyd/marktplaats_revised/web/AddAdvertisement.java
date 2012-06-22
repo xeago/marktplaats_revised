@@ -16,6 +16,8 @@ import javax.transaction.UserTransaction;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.entities.User;
+import nl.zuyd.marktplaats_revised.repositories.AdvertisementRepository;
+import nl.zuyd.marktplaats_revised.repositories.IAdvertisementRepository;
 import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
 /**
@@ -24,15 +26,12 @@ import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 @WebServlet("/AddAdvertisement")
 public class AddAdvertisement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	@PersistenceContext
-	private EntityManager em;
-	
-	@Resource 
-	private UserTransaction utx; 
-	
+
 	@EJB
 	IUserRepository userRepo;
+	
+	@EJB
+	IAdvertisementRepository advertRepo;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,29 +53,14 @@ public class AddAdvertisement extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		try {
-			
-			this.utx.begin();
-			AddAdvertisement(request);
-			this.utx.commit();
-		}
-		catch (Exception ex) {
-			response.getWriter().write(ex.getMessage().toString());
-		}
-
-			
+		AddAdvertisement(request);		
 		 this.getServletContext()
-		 	.getRequestDispatcher("/ListAdvertisements.jsp").forward(request, response);
+		 	.getRequestDispatcher("/").forward(request, response);
 
 	}
 	
 	public void AddAdvertisement(HttpServletRequest request)
 	{
-		//EntityManager em = this.emf.createEntityManager();
-		
-		
-		
 		 Advertisement add = new Advertisement();
 		 
 		 add.setPrice(request.getParameter("Price"));
@@ -90,14 +74,12 @@ public class AddAdvertisement extends HttpServlet {
 		 add.setTitle(request.getParameter("Title"));
 		 add.setStatus(0);
 		 
-		 //get user logged in
 		 String userName = request.getUserPrincipal().getName();
 		 User u =  userRepo.getByUsername(userName);
 		 add.setAdvertiser(u);
-		 //add.setAdvertiser(new User());
 		 
-		 this.em.persist(add);
-		 this.em.flush();
+		 //add to repo
+		advertRepo.AddAdvertisement(add);
 	}
 
 }

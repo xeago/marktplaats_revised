@@ -11,4 +11,6 @@ public interface IAdvertisementRepository
 {	
 	Advertisement getById(int id);
 	List<Advertisement> getAll();
+	void AddAdvertisement(Advertisement u);
+	List<Advertisement> getByTitle(String title);
 }
