@@ -62,7 +62,7 @@ public class signupServlet extends HttpServlet {
 		 user.setEmail(request.getParameter("u_email"));
 		 user.setPassword(request.getParameter("u_email"));
 		 user.setUsername(request.getParameter("u_username"));
-		 
+		 user.setWoonplaats(request.getParameter("u_home"));
 		 
 		 this.em.persist(user);
 		 this.em.flush();

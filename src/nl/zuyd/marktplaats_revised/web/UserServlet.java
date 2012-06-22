@@ -60,9 +60,6 @@ public class UserServlet extends HttpServlet
 		}
 		else
 		{
-			
-			// else list all advertisements and forward to the
-			// ListAdvertisements.jsp to display all advertisements
 			request.setAttribute("Users", l);
 			this.getServletContext()
 					.getRequestDispatcher("/ListUsers.jsp")

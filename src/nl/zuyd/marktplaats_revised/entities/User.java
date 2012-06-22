@@ -31,6 +31,9 @@ public class User
 	@Column(name="groupname", nullable=false)
 	private String groupname = "USER";
 	
+	@Column(name="woonplaats")
+	private String woonplaats;
+	
 	public String getEmail()
 	{
 		return this.email;
@@ -73,5 +76,13 @@ public class User
 
 	public String getGroupname() {
 		return groupname;
+	}
+
+	public String getWoonplaats() {
+		return woonplaats;
+	}
+
+	public void setWoonplaats(String woonplaats) {
+		this.woonplaats = woonplaats;
 	}
 }
