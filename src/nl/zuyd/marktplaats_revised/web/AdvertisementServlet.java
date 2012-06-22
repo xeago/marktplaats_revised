@@ -95,13 +95,12 @@ public class AdvertisementServlet extends HttpServlet
 			// del
 			Advertisement advertToDelete = this.advertRepo.getById(Integer
 					.parseInt(p));
-			if (advertToDelete.getAdvertiser().getUsername()==request.getUserPrincipal().getName())
+			if (advertToDelete.getAdvertiser().getUsername().equals(request.getUserPrincipal().getName()))
 			{
 				response.getWriter().write(
 						"Advert with title " + advertToDelete.getTitle()
 								+ " is going to be deleted");
 				advertRepo.deleteAdvertisement(advertToDelete);
-				
 			}
 		}
 		else if ((p = request.getParameter("sold_id")) != null)

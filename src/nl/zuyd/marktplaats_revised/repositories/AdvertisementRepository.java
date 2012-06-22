@@ -31,9 +31,9 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@Override
 	public void deleteAdvertisement(Advertisement a)
 	{
-		em.remove(a);
+		Object o = em.find(a.getClass(), a.getId()); // triple wtf
+		em.remove(o);
 		em.flush();
-		System.out.print("hier");
 	}	
 	
 	@Override
