@@ -32,6 +32,16 @@
   <security-constraint>
     <display-name>SecurityConstraint</display-name>
     <web-resource-collection>
+      <web-resource-name>register</web-resource-name>
+      <url-pattern>/Registratie.jsp</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <security-constraint>
+    <display-name>SecurityConstraint</display-name>
+    <web-resource-collection>
       <web-resource-name>logout</web-resource-name>
       <url-pattern>/logout</url-pattern>
     </web-resource-collection>

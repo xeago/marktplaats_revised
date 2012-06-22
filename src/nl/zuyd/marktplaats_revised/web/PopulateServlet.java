@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
 
+
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.entities.User;
-
-
 
 /**
  * Servlet implementation class PopulateServlet
