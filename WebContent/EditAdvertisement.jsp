@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@include file="header.jsp" %>
-
+<%@ include file="header.jsp" %>
+		
 		<a class="terugLink" href="advertisements">Terug</a>
 		<form action="adminAdvertisement" method="POST">
 			<input type="hidden" name="save_id" value="${Advertisement.id}" />

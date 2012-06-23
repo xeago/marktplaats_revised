@@ -4,14 +4,16 @@
 <%@include file="header.jsp"%>
 <h1>${Advertisement.title} - ${Advertisement.price}</h1>
 
+<p>Verkochtstatus: ${Advertisement.status}</p>
+
+<p>
 Adverteerder: 
 ${Advertisement.advertiser.username},
 ${Advertisement.advertiser.email},
-${Advertisement.advertiser.woonplaats}.
+${Advertisement.advertiser.woonplaats}
+</p>
 
 <p>${Advertisement.description}</p>
 
 <a href="mailto:${Advertisement.advertiser.email}?subject=Reactie via marktplaats_revised op '${Advertisement.title}'">Neem contact op</a>
-</div>
-</body>
-</html>
+<%@ include file="footer.jsp" %>

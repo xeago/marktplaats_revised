@@ -30,9 +30,10 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@Override
 	public void deleteAdvertisement(Advertisement a)
 	{
-		Object o = em.find(a.getClass(), a.getId()); // triple wtf
-		em.remove(o);
-		em.flush();
+		//Object o = em.find(a.getClass(), a.getId()); // triple wtf
+		a = this.em.merge(a);
+		this.em.remove(a);
+		this.em.flush();
 	}	
 	
 	@Override
@@ -69,8 +70,9 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	}
 
 	@Override
-	public void saveAdvertisement(Advertisement advert)
+	public void updateAdvertisement(Advertisement advert)
 	{
+		advert = this.em.merge(advert);
 		this.em.flush();		
 	}
 

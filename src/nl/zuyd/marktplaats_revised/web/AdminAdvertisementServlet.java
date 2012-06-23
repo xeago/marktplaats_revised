@@ -47,70 +47,79 @@ public class AdminAdvertisementServlet extends HttpServlet {
 			Advertisement advert = this.advertRepo.getById(Integer.parseInt(s));
 			request.setAttribute("Advertisement", advert);
 
-
 			// or just check if the owner == the current user
-			if (advert!=null && advert.getAdvertiser().getId() == userRepo.getById(
-					request.getUserPrincipal().getName()).getId()) {
+			if (advert != null
+					&& advert.getAdvertiser().getId() == userRepo.getById(
+							request.getUserPrincipal().getName()).getId()) {
 				this.getServletContext()
 						.getRequestDispatcher("/EditAdvertisement.jsp")
 						.forward(request, response);
 				return;
 			}
-			
-		}
-		else if (request.getUserPrincipal()!=null)
-		{
-			User user = userRepo.getByUsername(request.getUserPrincipal().getName());
-			List<Advertisement> advertisementsByUser = advertRepo.getAdvertisementsByUser(user);
+
+		} else if (request.getUserPrincipal() != null) {
+			User user = userRepo.getByUsername(request.getUserPrincipal()
+					.getName());
+			List<Advertisement> advertisementsByUser = advertRepo
+					.getAdvertisementsByUser(user);
 			request.setAttribute("Advertisements", advertisementsByUser);
 			this.getServletContext()
-			.getRequestDispatcher("/ListAdvertisements.jsp")
-			.forward(request, response);
-		}
-		else {
-			this.getServletContext()
-			.getRequestDispatcher("/advertisements")
-			.forward(request, response);
+					.getRequestDispatcher("/ListAdvertisements.jsp")
+					.forward(request, response);
+		} else {
+			this.getServletContext().getRequestDispatcher("/advertisements")
+					.forward(request, response);
 			return;
 		}
 	}
 
-
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
-	{
-		//List<Advertisement> l = advertRepo.getAll();
+			HttpServletResponse response) throws ServletException, IOException {
+		// List<Advertisement> l = advertRepo.getAll();
 		String p;
-		if ((p = request.getParameter("delete_id")) != null)
-		{
+		if ((p = request.getParameter("delete_id")) != null) {
 			// del
 			Advertisement advertToDelete = this.advertRepo.getById(Integer
 					.parseInt(p));
 
-			if (advertToDelete.getAdvertiser().getUsername().equals(request.getUserPrincipal().getName()))
-			{
+			if (advertToDelete.getAdvertiser().getUsername()
+					.equals(request.getUserPrincipal().getName())) {
 				response.getWriter().write(
 						"Advert with title " + advertToDelete.getTitle()
 								+ " is going to be deleted");
 				advertRepo.deleteAdvertisement(advertToDelete);
 			}
-		}
-		else if ((p = request.getParameter("sold_id")) != null)
-		{
-			response.getWriter().write(p);
-		}
-		else if ((p = request.getParameter("save_id")) != null)
-		{			
+		} else if ((p = request.getParameter("sold_id")) != null) {
+			int id = Integer.parseInt(p);
+
+			Advertisement soldAdvert = this.advertRepo.getById(id);
+
+			if (soldAdvert != null) {
+				soldAdvert.setStatus(1); // 0 = unsold, 1 = sold
+				this.advertRepo.updateAdvertisement(soldAdvert);
+			}
+
+			// TODO: redirect to /advertisements
+		} else if ((p = request.getParameter("save_id")) != null) {
 			Advertisement advertToUpdate = this.advertRepo.getById(Integer
 					.parseInt(p));
-			
-			if (advertToUpdate != null){
-				//TODO SAVE THE UPDATED ADVERT
-				
+
+			if (advertToUpdate != null) {
+				// TODO SAVE THE UPDATED ADVERT
+
+				String title = request.getParameter("Title");
+				String description = request.getParameter("Description");
+				String price = request.getParameter("Price");
+
+				advertToUpdate.setTitle(title);
+				advertToUpdate.setDescription(description);
+				advertToUpdate.setPrice(price);
+
+				this.advertRepo.updateAdvertisement(advertToUpdate);
+
+				// TODO: redirect to /advertisements
 			}
-		}
-		else
-		{
+		} else {
 			super.doPost(request, response);
 		}
 	}
