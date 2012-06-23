@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
+import nl.zuyd.marktplaats_revised.entities.User;
 
 @Local
 public interface IAdvertisementRepository
@@ -16,4 +17,5 @@ public interface IAdvertisementRepository
 	void addAdvertisement(Advertisement u);
 	void saveAdvertisement(Advertisement advert);
 	void deleteAdvertisement(Advertisement a);
+	List<Advertisement> getAdvertisementsByUser(User user);
 }

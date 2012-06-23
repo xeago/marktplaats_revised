@@ -4,7 +4,7 @@
 <%@include file="header.jsp" %>
 
 		<a class="terugLink" href="advertisements">Terug</a>
-		<form action="advertisements" method="POST">
+		<form action="adminAdvertisement" method="POST">
 			<input type="hidden" name="save_id" value="${Advertisement.id}" />
 			<div class="FormRow">
 				<div class="FormColumn1">Titel</div>
@@ -29,11 +29,11 @@
 			<input type="submit" value="Opslaan">
 		</form>
 
-		<form action="advertisements" method="POST">
+		<form action="adminAdvertisement" method="POST">
 			<input type="hidden" name="delete_id" value="${Advertisement.id}" />
 			<input type="submit" value="Verwijderen">
 		</form>
-		<form action="advertisements" method="POST">
+		<form action="adminAdvertisement" method="POST">
 			<input type="hidden" name="sold_id" value="${Advertisement.id}" /> <input
 				type="submit" value="Markeren als verkocht">
 		</form>

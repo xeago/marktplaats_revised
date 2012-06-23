@@ -4,7 +4,7 @@
 <%@include file="header.jsp" %>
 
 		<a class="terugLink" href="advertisements">Terug</a>
-		<form action="AddAdvertisementServlet" method="POST">
+		<form action="adminAdvertisement" method="POST">
 			<div class="FormRow">
 				<div class="FormColumn1">Titel</div>
 				<div class="FormColumn2">

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
+import nl.zuyd.marktplaats_revised.entities.User;
 
 @Singleton
 @Local(IAdvertisementRepository.class)
@@ -71,5 +72,13 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	public void saveAdvertisement(Advertisement advert)
 	{
 		this.em.flush();		
+	}
+
+	@Override
+	public List<Advertisement> getAdvertisementsByUser(User user) {
+		//SELECT pub FROM Publisher pub JOIN pub.magazines mag 
+		TypedQuery<Advertisement> q = this.em.createQuery("" +
+"SELECT c FROM Advertisement c JOIN c.advertiser adverteerder WHERE adverteerder.username = '" + user.getUsername()+"'", Advertisement.class);
+		return q.getResultList();
 	}
 }

@@ -58,14 +58,6 @@ public class AdvertisementServlet extends HttpServlet
 						.getRequestDispatcher("/ListAdvertisements.jsp")
 						.forward(request, response);
 			}
-			
-			// or just check if the owner == the current user
-			if (advert.getAdvertiser().getId() == userRepo.getById(request.getUserPrincipal().getName()).getId())
-			{
-				this.getServletContext()
-						.getRequestDispatcher("/EditAdvertisement.jsp")
-						.forward(request, response);
-			}
 			else
 			{
 				this.getServletContext()
@@ -82,45 +74,6 @@ public class AdvertisementServlet extends HttpServlet
 			this.getServletContext()
 					.getRequestDispatcher("/ListAdvertisements.jsp")
 					.forward(request, response);
-		}
-	}
-	
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
-	{
-		//List<Advertisement> l = advertRepo.getAll();
-		String p;
-		if ((p = request.getParameter("delete_id")) != null)
-		{
-			// del
-			Advertisement advertToDelete = this.advertRepo.getById(Integer
-					.parseInt(p));
-
-			if (advertToDelete.getAdvertiser().getUsername().equals(request.getUserPrincipal().getName()))
-			{
-				response.getWriter().write(
-						"Advert with title " + advertToDelete.getTitle()
-								+ " is going to be deleted");
-				advertRepo.deleteAdvertisement(advertToDelete);
-			}
-		}
-		else if ((p = request.getParameter("sold_id")) != null)
-		{
-			response.getWriter().write(p);
-		}
-		else if ((p = request.getParameter("save_id")) != null)
-		{			
-			Advertisement advertToUpdate = this.advertRepo.getById(Integer
-					.parseInt(p));
-			
-			if (advertToUpdate != null){
-				//TODO SAVE THE UPDATED ADVERT
-				
-			}
-		}
-		else
-		{
-			doGet(request, response);
 		}
 	}
 }
