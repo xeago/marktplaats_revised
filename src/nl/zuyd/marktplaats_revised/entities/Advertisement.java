@@ -18,7 +18,7 @@ public class Advertisement
 	private User advertiser;
 	
 	@Column(name="status")
-	private int status;
+	private int status = 0;
 	
 	@Column(name="title", nullable=false, length=100)
 	private String title;

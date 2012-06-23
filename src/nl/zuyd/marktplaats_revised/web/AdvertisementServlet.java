@@ -102,13 +102,22 @@ public class AdvertisementServlet extends HttpServlet
 						"Advert with title " + advertToDelete.getTitle()
 								+ " is going to be deleted");
 				
-				// TODO: send the user to /advertisements or something ?
+				// TODO: redirect to /advertisements
 				advertRepo.deleteAdvertisement(advertToDelete);
 			}
 		}
 		else if ((p = request.getParameter("sold_id")) != null)
 		{
-			response.getWriter().write(p);
+			int id = Integer.parseInt(p);
+			
+			Advertisement soldAdvert = this.advertRepo.getById(id);
+			
+			if (soldAdvert != null) {
+				soldAdvert.setStatus(1); // 0 = unsold, 1 = sold
+				this.advertRepo.saveAdvertisement(soldAdvert);
+			}
+			
+			// TODO: redirect to /advertisements
 		}
 		else if ((p = request.getParameter("save_id")) != null)
 		{			
@@ -117,13 +126,18 @@ public class AdvertisementServlet extends HttpServlet
 			
 			if (advertToUpdate != null){
 				//TODO SAVE THE UPDATED ADVERT
-				/*
+				
+				String title = request.getParameter("Title");
+				String description = request.getParameter("Description");
+				String price = request.getParameter("Price");
+				
 				advertToUpdate.setTitle(title);
 				advertToUpdate.setDescription(description);
 				advertToUpdate.setPrice(price);
-				*/
-				this.advertRepo.saveAdvertisement(advertToUpdate);			
 				
+				this.advertRepo.saveAdvertisement(advertToUpdate);
+				
+				// TODO: redirect to /advertisements
 			}
 		}
 		else
