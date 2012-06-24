@@ -5,7 +5,11 @@
 <%@include file="header.jsp"%>
 <h1>${Advertisement.title} - ${Advertisement.price}</h1>
 
-<p>Verkochtstatus: <c:if test="${Advertisement.status} == 1">Verkocht</c:if>
+<p>Verkochtstatus: 
+<c:choose>
+	<c:when test="${Advertisement.status} == 1"><b>Verkocht</b></c:when>
+	<c:otherwise><b>Niet verkocht</b></c:otherwise>
+</c:choose>
 
 <p>
 Adverteerder: 
