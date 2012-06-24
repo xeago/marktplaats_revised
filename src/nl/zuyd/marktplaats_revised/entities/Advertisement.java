@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +16,7 @@ public class Advertisement
 	@Column(name="id")
 	private int id;
 
+	@ManyToOne(targetEntity=User.class)
 	private User advertiser;
 	
 	@Column(name="status")

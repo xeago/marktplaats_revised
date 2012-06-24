@@ -1,11 +1,14 @@
 package nl.zuyd.marktplaats_revised.entities;
 
+import java.util.List;
+
 import javax.ejb.Stateful;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -33,6 +36,9 @@ public class User
 	
 	@Column(name="woonplaats")
 	private String woonplaats;
+	
+	@OneToMany(targetEntity=Advertisement.class,mappedBy="advertiser")
+	private List<Advertisement> advertisements;
 	
 	public String getEmail()
 	{
@@ -84,5 +90,10 @@ public class User
 
 	public void setWoonplaats(String woonplaats) {
 		this.woonplaats = woonplaats;
+	}
+
+	public List<Advertisement> getAdvertisements()
+	{
+		return advertisements;
 	}
 }
