@@ -35,7 +35,6 @@ public class AdminAdvertisementServlet extends HttpServlet
 	public AdminAdvertisementServlet()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**

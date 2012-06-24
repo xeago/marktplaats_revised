@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.research.ws.wadl.Request;
-
 import nl.zuyd.marktplaats_revised.entities.User;
 import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
