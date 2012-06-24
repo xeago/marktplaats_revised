@@ -5,6 +5,10 @@ body {
 	margin: 0 auto;
 }
 
+#header {
+	margin-top: 15px;
+}
+
 #header, #footer {
 	position: relative;
 	border: solid 1px black;
