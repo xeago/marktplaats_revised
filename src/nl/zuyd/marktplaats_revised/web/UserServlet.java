@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nl.zuyd.marktplaats_revised.entities.User;
+import nl.zuyd.marktplaats_revised.repositories.IAdvertisementRepository;
 import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 
 /**
@@ -23,7 +24,8 @@ public class UserServlet extends HttpServlet
 	
 	@EJB
 	IUserRepository userRepo;
-	
+	@EJB
+	IAdvertisementRepository advertRepo;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -51,10 +53,11 @@ public class UserServlet extends HttpServlet
 				if (user.getId() == Integer.parseInt(s))
 					u = user;
 			}
-			
+
 			request.setAttribute("User", u);
+			request.setAttribute("Advertisements", advertRepo.getAdvertisementsByUser(u));
 			this.getServletContext()
-						.getRequestDispatcher("/EditUser.jsp")
+						.getRequestDispatcher("/SingleUser.jsp")
 						.forward(request, response);
 
 		}
@@ -64,29 +67,6 @@ public class UserServlet extends HttpServlet
 			this.getServletContext()
 					.getRequestDispatcher("/ListUsers.jsp")
 					.forward(request, response);
-		}
-	}
-	
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
-	{		
-		String p;
-		if ((p = request.getParameter("delete_id")) != null)
-		{
-			// del
-			response.getWriter().write(p);
-		}
-		else if ((p = request.getParameter("sold_id")) != null)
-		{
-			response.getWriter().write(p);
-		}
-		else if ((p = request.getParameter("save_id")) != null)
-		{
-			response.getWriter().write(p);
-		}
-		else
-		{
-			super.doPost(request, response);
 		}
 	}
 }
