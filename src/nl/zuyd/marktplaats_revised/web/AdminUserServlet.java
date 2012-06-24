@@ -31,6 +31,15 @@ public class AdminUserServlet extends HttpServlet {
         super();
     }
 
+    protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException
+	{
+    	User byUsername = userRepo.getByUsername(request.getParameter("id"));
+		// TODO handle byUsername==null and auth
+    	request.setAttribute("User", byUsername);
+    	this.getServletContext().getRequestDispatcher("/EditUser.jsp").forward(request, response);
+	}
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
