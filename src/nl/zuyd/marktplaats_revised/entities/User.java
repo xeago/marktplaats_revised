@@ -109,8 +109,9 @@ public class User {
 	}
 
 	public boolean equals(User obj) {
-		// TODO Auto-generated method stub
-		return super.equals(null);
+		return this.id==obj.id
+				&& this.hashCode()==obj.hashCode()
+				&& this.username.equals(obj.username);
 	}
 
 	public String toString() {
