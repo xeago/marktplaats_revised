@@ -103,4 +103,28 @@ public class Advertisement
 	{
 		this.advertiser = advertiser;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (obj == this)
+			return true;
+		if (obj instanceof Advertisement) return equals((Advertisement)obj);
+		return false;
+	}
+
+	public int hashCode() {
+		return id;
+	}
+	
+	public boolean equals(Advertisement obj) {
+		return this.id==obj.id
+				&& this.advertiser.equals(obj.advertiser);
+	}
+
+	public String toString() {
+		return title + " = " + price;
+	}
+	
 }
