@@ -97,7 +97,7 @@ public class User {
 			return this.equals((User) obj);
 		else if (obj instanceof String)
 			return this.equals((String) obj);
-		return false;
+		return equals(obj.toString());
 	}
 
 	public int hashCode() {

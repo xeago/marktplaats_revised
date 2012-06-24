@@ -73,7 +73,7 @@ public class AdvertisementServlet extends HttpServlet
 			}
 			else
 			{
-				if (advert.getAdvertiser().getUsername().equals(request.getUserPrincipal().getName()))
+				if (advert.getAdvertiser().equals(request.getUserPrincipal()))
 				{
 					this.getServletContext()
 							.getRequestDispatcher("/EditAdvertisement.jsp")

@@ -69,7 +69,7 @@ public class AddAdvertisementServlet extends HttpServlet {
 		 add.setTitle(request.getParameter("Title"));
 		 add.setStatus(0);
 		 
-		 String userName = request.getUserPrincipal().getName();
+		 String userName = request.getUserPrincipal().getName(); // User must be logged in because this is a private zone
 		 User u =  userRepo.getByUsername(userName);
 		 add.setAdvertiser(u);
 		 
