@@ -7,12 +7,15 @@
 
 <ul>
 	<c:forEach var="advertisement" items="${Advertisements}">
-		<li><a href="advertisements?id=${advertisement.id}">
-				${advertisement.title} </a> 
-				<c:if test="${advertisement.status == 1}">	
-					<b>VERKOCHT</b>
-				</c:if>
-		<p>${advertisement.description}</p></li>
+		<li><c:choose>
+				<c:when test="${advertisement.status == 1}">
+				${advertisement.title} - <b>VERKOCHT</b>
+				</c:when>
+				<c:otherwise>
+					<a href="advertisements?id=${advertisement.id}">${advertisement.title}</a>
+				</c:otherwise>
+			</c:choose>
+			<p>${advertisement.description}</p></li>
 	</c:forEach>
 </ul>
 
