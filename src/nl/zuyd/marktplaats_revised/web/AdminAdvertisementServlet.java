@@ -98,27 +98,33 @@ public class AdminAdvertisementServlet extends HttpServlet {
 				soldAdvert.setStatus(1); // 0 = unsold, 1 = sold
 				this.advertRepo.updateAdvertisement(soldAdvert);
 			}
+			this.getServletContext().getRequestDispatcher("/advertisements")
+					.forward(request, response);
 
-			// TODO: redirect to /advertisements
 		} else if ((p = request.getParameter("save_id")) != null) {
 			Advertisement advertToUpdate = this.advertRepo.getById(Integer
 					.parseInt(p));
+			
+			if (advertToUpdate.getAdvertiser().getUsername()
+					.equals(request.getUserPrincipal().getName())) {
 
-			if (advertToUpdate != null) {
-				// TODO SAVE THE UPDATED ADVERT
+				if (advertToUpdate != null) {
 
-				String title = request.getParameter("Title");
-				String description = request.getParameter("Description");
-				String price = request.getParameter("Price");
+					String title = request.getParameter("Title");
+					String description = request.getParameter("Description");
+					String price = request.getParameter("Price");
 
-				advertToUpdate.setTitle(title);
-				advertToUpdate.setDescription(description);
-				advertToUpdate.setPrice(price);
+					advertToUpdate.setTitle(title);
+					advertToUpdate.setDescription(description);
+					advertToUpdate.setPrice(price);
 
-				this.advertRepo.updateAdvertisement(advertToUpdate);
+					this.advertRepo.updateAdvertisement(advertToUpdate);
 
-				// TODO: redirect to /advertisements
+				}
 			}
+			this.getServletContext().getRequestDispatcher("/advertisements")
+					.forward(request, response);
+
 		} else {
 			super.doPost(request, response);
 		}

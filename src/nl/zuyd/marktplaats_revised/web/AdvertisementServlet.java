@@ -17,57 +17,59 @@ import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
 /**
  * Servlet implementation class AdvertisementServlet
  */
-@WebServlet("/advertisements")  
-public class AdvertisementServlet extends HttpServlet
-{
+@WebServlet("/advertisements")
+public class AdvertisementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EJB
 	IAdvertisementRepository advertRepo;
 	@EJB
 	IUserRepository userRepo;
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdvertisementServlet()
-	{
+	public AdvertisementServlet() {
 		super();
 	}
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
-	{
+			HttpServletResponse response) throws ServletException, IOException {
+		doResponse(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doResponse(request, response);
+	}
+
+	private void doResponse(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		List<Advertisement> l = advertRepo.getAll();
-		
+
 		// check for query params
 		String s;
-		if ((s = request.getParameter("id")) != null)
-		{
+		if ((s = request.getParameter("id")) != null) {
 			Advertisement advert = this.advertRepo.getById(Integer.parseInt(s));
 			request.setAttribute("Advertisement", advert);
-						
+
 			if (advert == null) {
 				request.setAttribute("Advertisements", advertRepo.getAll());
-				
+
 				this.getServletContext()
 						.getRequestDispatcher("/ListAdvertisements.jsp")
 						.forward(request, response);
-			}
-			else
-			{
+			} else {
 				this.getServletContext()
 						.getRequestDispatcher("/SingleAdvertisement.jsp")
 						.forward(request, response);
 			}
-		}
-		else
-		{
-			
+		} else {
+
 			// else list all advertisements and forward to the
 			// ListAdvertisements.jsp to display all advertisements
 			request.setAttribute("Advertisements", l);
