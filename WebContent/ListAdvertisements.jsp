@@ -9,7 +9,7 @@
 	<c:forEach var="advertisement" items="${Advertisements}">
 		<li><a href="advertisements?id=${advertisement.id}">
 				${advertisement.title} </a> 
-				<c:if test="${advertisement.status == 1}">
+				<c:if test="${advertisement.status == 1}">	
 					<b>VERKOCHT</b>
 				</c:if>
 		<p>${advertisement.description}</p></li>
