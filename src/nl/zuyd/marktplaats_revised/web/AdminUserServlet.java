@@ -22,12 +22,6 @@ public class AdminUserServlet extends HttpServlet {
 	
 	@EJB
 	IUserRepository userRepo;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminUserServlet() {
-        super();
-    }
 
     protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException

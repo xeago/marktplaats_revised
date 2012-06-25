@@ -28,13 +28,6 @@ public class PopulateServlet extends HttpServlet {
 	
 	@Resource 
 	private UserTransaction utx; 
-		
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PopulateServlet() {
-        super();
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

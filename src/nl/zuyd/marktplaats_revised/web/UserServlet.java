@@ -27,13 +27,6 @@ public class UserServlet extends HttpServlet {
 	IAdvertisementRepository advertRepo;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public UserServlet() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */

@@ -26,14 +26,7 @@ public class AdvertisementServlet extends HttpServlet
 	IAdvertisementRepository advertRepo;
 	@EJB
 	IUserRepository userRepo;
-	
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AdvertisementServlet()
-	{
-		super();
-	}
+
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

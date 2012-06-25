@@ -74,12 +74,6 @@ public class AdminAdvertisementServlet extends HttpServlet
 					.getRequestDispatcher("/ListAdvertisements.jsp")
 					.forward(request, response);
 		}
-		else
-		{
-			this.getServletContext().getRequestDispatcher("/advertisements")
-					.forward(request, response);
-			return;
-		}
 	}
 	
 	protected void doPost(HttpServletRequest request,
