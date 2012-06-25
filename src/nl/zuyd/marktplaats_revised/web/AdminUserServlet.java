@@ -16,24 +16,29 @@ import nl.zuyd.marktplaats_revised.repositories.IUserRepository;
  * Servlet implementation class AdminUserServlet
  */
 @WebServlet("/adminUser")
-public class AdminUserServlet extends HttpServlet {
+public class AdminUserServlet extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
-      
 	
 	@EJB
 	IUserRepository userRepo;
-
-    protected void doGet(HttpServletRequest request,
+	
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-    	User byUsername = userRepo.getByUsername(request.getParameter("id"));
-		// TODO handle byUsername==null and auth
-    	request.setAttribute("User", byUsername);
-    	this.getServletContext().getRequestDispatcher("/EditUser.jsp").forward(request, response);
+		User byUsername = userRepo.getByUsername(request.getParameter("id"));
+		
+		if (byUsername != null && byUsername.equals(request.getUserPrincipal()))
+		{
+			request.setAttribute("User", byUsername);
+			this.getServletContext().getRequestDispatcher("/EditUser.jsp")
+					.forward(request, response);
+		}
 	}
-    
+	
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
@@ -42,18 +47,25 @@ public class AdminUserServlet extends HttpServlet {
 		if ((p = request.getParameter("delete_username")) != null)
 		{
 			User u = userRepo.getByPK(p);
-			// TODO handle u==null and auth
-			userRepo.deleteUser(u);
-			this.getServletContext().getRequestDispatcher("/users").forward(request, response);
+			
+			if (u != null && u.equals(request.getUserPrincipal()))
+			{
+				userRepo.deleteUser(u);
+				this.getServletContext().getRequestDispatcher("/users")
+						.forward(request, response);
+			}
 		}
 		else if ((p = request.getParameter("save_username")) != null)
 		{
 			User u = userRepo.getByPK(p);
-			// TODO handle u==null and auth
-			u.setEmail(request.getParameter("Email"));
-			u.setWoonplaats(request.getParameter("Woonplaats"));
-			u.setPassword(request.getParameter("Password"));
-			userRepo.saveUser(null);
+			
+			if (u != null && u.equals(request.getUserPrincipal()))
+			{
+				u.setEmail(request.getParameter("Email"));
+				u.setWoonplaats(request.getParameter("Woonplaats"));
+				u.setPassword(request.getParameter("Password"));
+				userRepo.saveUser(u);
+			}
 		}
 		else
 		{

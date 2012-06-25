@@ -47,10 +47,6 @@ public class UserRepository implements IUserRepository
 	@Override
 	public User getByUsername(String username) {
 		return this.getByPK(username);
-		// old code from when ID was still the primary key
-		// since then, the username has become the PK
-		//TypedQuery<User> q = this.em.createQuery("SELECT c FROM User c WHERE c.username = " + username, User.class);
-		//return q.getSingleResult();
 	}	
 	
 	@Override

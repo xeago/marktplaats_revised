@@ -26,6 +26,7 @@ public class AdminAdvertisementServlet extends HttpServlet
 	
 	@EJB
 	IAdvertisementRepository advertRepo;
+	
 	@EJB
 	IUserRepository userRepo;
 	
@@ -67,9 +68,12 @@ public class AdminAdvertisementServlet extends HttpServlet
 		{
 			User user = userRepo.getByUsername(request.getUserPrincipal()
 					.getName());
+			
 			List<Advertisement> advertisementsByUser = advertRepo
 					.getAdvertisementsByUser(user);
+			
 			request.setAttribute("Advertisements", advertisementsByUser);
+			
 			this.getServletContext()
 					.getRequestDispatcher("/ListAdvertisements.jsp")
 					.forward(request, response);
@@ -79,7 +83,6 @@ public class AdminAdvertisementServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		// List<Advertisement> l = advertRepo.getAll();
 		String p;
 		if ((p = request.getParameter("delete_id")) != null)
 		{
@@ -93,6 +96,7 @@ public class AdminAdvertisementServlet extends HttpServlet
 				response.getWriter().write(
 						"Advert with title " + advertToDelete.getTitle()
 								+ " is going to be deleted");
+				
 				advertRepo.deleteAdvertisement(advertToDelete);
 			}
 		}
@@ -107,6 +111,7 @@ public class AdminAdvertisementServlet extends HttpServlet
 				soldAdvert.setStatus(1); // 0 = unsold, 1 = sold
 				this.advertRepo.updateAdvertisement(soldAdvert);
 			}
+			
 			this.getServletContext().getRequestDispatcher("/advertisements")
 					.forward(request, response);
 			
@@ -118,8 +123,7 @@ public class AdminAdvertisementServlet extends HttpServlet
 			
 			if (advertToUpdate.getAdvertiser().getUsername()
 					.equals(request.getUserPrincipal().getName()))
-			{
-				
+			{				
 				String title = request.getParameter("Title");
 				String description = request.getParameter("Description");
 				String price = request.getParameter("Price");
@@ -148,14 +152,19 @@ public class AdminAdvertisementServlet extends HttpServlet
 			advertToSave.setTitle(title);
 			User advertiser = this.userRepo.getByUsername(request
 					.getUserPrincipal().getName());
+			
 			advertToSave.setAdvertiser(advertiser);
 			advertToSave.setPrice(price);
 			advertToSave.setDate(new Date().toString().substring(0, 10));
 			advertToSave.setDescription(description);
+			
 			this.advertRepo.addAdvertisement(advertToSave);
 			
 			request.setAttribute("Advertisement", advertToSave);
-			getServletContext().getRequestDispatcher("/SingleAdvertisement.jsp").forward(request, response);
+			
+			getServletContext()
+					.getRequestDispatcher("/SingleAdvertisement.jsp").forward(
+							request, response);
 		}
 	}
 	
