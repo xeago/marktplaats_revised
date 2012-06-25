@@ -53,7 +53,7 @@ public class AdminAdvertisementServlet extends HttpServlet
 			
 			// or just check if the owner == the current user
 			if (advert != null
-					&& advert.getAdvertiser().getId() == userRepo.getById(
+					&& advert.getAdvertiser().getId() == userRepo.getByPK(
 							request.getUserPrincipal().getName()).getId())
 			{
 				this.getServletContext()

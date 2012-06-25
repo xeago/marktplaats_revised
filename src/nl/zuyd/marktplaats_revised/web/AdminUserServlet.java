@@ -41,14 +41,14 @@ public class AdminUserServlet extends HttpServlet {
 		String p;
 		if ((p = request.getParameter("delete_username")) != null)
 		{
-			User u = userRepo.getById(p);
+			User u = userRepo.getByPK(p);
 			// TODO handle u==null and auth
 			userRepo.deleteUser(u);
 			this.getServletContext().getRequestDispatcher("/users").forward(request, response);
 		}
 		else if ((p = request.getParameter("save_username")) != null)
 		{
-			User u = userRepo.getById(p);
+			User u = userRepo.getByPK(p);
 			// TODO handle u==null and auth
 			u.setEmail(request.getParameter("Email"));
 			u.setWoonplaats(request.getParameter("Woonplaats"));

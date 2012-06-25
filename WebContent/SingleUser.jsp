@@ -6,7 +6,7 @@
 <h1>${User.username}</h1>
 <p>${User.woonplaats} - ${User.email}</p>
 <ul>
-	<c:forEach var="advertisement" items="${Advertisements}">
+	<c:forEach var="advertisement" items="${User.advertisements}">
 		<li><a href="advertisements?id=${advertisement.id}">
 				${advertisement.title} - ${advertisement.title}</a>
 		<p>${advertisement.description}</p></li>

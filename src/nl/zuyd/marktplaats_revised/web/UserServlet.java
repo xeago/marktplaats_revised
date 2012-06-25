@@ -51,15 +51,11 @@ public class UserServlet extends HttpServlet {
 		// check for query params
 		String s;
 		if ((s = request.getParameter("id")) != null) {
-			User u = null;
-			for (User user : l) {
-				if (user.getId() == Integer.parseInt(s))
-					u = user;
-			}
+			User u = this.userRepo.getById(Integer.parseInt(s));
 
 			request.setAttribute("User", u);
-			request.setAttribute("Advertisements",
-					advertRepo.getAdvertisementsByUser(u));
+			
+			
 			this.getServletContext().getRequestDispatcher("/SingleUser.jsp")
 					.forward(request, response);
 
