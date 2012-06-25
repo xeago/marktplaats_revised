@@ -161,7 +161,8 @@ public class AdminAdvertisementServlet extends HttpServlet
 			advertToSave.setDescription(description);
 			this.advertRepo.addAdvertisement(advertToSave);
 			
-			//super.doPost(request, response);
+			request.setAttribute("Advertisement", advertToSave);
+			getServletContext().getRequestDispatcher("/SingleAdvertisement.jsp").forward(request, response);
 		}
 	}
 	

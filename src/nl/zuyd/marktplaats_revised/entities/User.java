@@ -36,7 +36,7 @@ public class User {
 	@Column(name = "woonplaats")
 	private String woonplaats;
 
-	@OneToMany(targetEntity = Advertisement.class, mappedBy = "advertiser")
+	@OneToMany(targetEntity = Advertisement.class, mappedBy = "advertiser",orphanRemoval=true)
 	private List<Advertisement> advertisements;
 
 	public String getEmail() {

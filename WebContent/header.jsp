@@ -18,6 +18,7 @@
 			</c:when>
 			<c:otherwise>
 				<a href="signup.jsp">Sign up</a>
+				<a href="login.jsp">Login</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
