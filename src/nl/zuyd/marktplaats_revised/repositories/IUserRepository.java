@@ -10,10 +10,12 @@ import nl.zuyd.marktplaats_revised.entities.User;
 public interface IUserRepository
 {
 	User getByPK(String id); 
-	List<User> getAll();
+	User getById(int id);
 	User getByUsername(String username);
+	
+	List<User> getAll();
+	
 	void addUser(User user);
 	void deleteUser(User user);
-	void saveUser(User user);
-	User getById(int id);
+	void saveUser(User user);	
 }

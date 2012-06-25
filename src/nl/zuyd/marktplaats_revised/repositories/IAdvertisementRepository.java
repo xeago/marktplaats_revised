@@ -11,11 +11,13 @@ import nl.zuyd.marktplaats_revised.entities.User;
 public interface IAdvertisementRepository
 {	
 	Advertisement getById(int id);
+	
 	List<Advertisement> getAll();	
 	List<Advertisement> getByTitle(String title);
-
+	List<Advertisement> findBySearch(String keyword);
+	List<Advertisement> getAdvertisementsByUser(User user);
+	
 	void addAdvertisement(Advertisement u);
 	void updateAdvertisement(Advertisement advert);
 	void deleteAdvertisement(Advertisement a);
-	List<Advertisement> getAdvertisementsByUser(User user);
 }

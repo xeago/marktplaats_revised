@@ -51,7 +51,7 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@Override
 	public List<Advertisement> getByTitle(String title) 
 	{
-		TypedQuery<Advertisement> q = this.em.createNamedQuery("SELECT c FROM Advertisement c WHERE c.title = " + title, Advertisement.class);
+		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c WHERE c.title = " + title, Advertisement.class);
 		return q.getResultList();
 	}
 
@@ -75,6 +75,15 @@ public class AdvertisementRepository implements IAdvertisementRepository
 		advert = this.em.merge(advert);
 		this.em.flush();		
 	}
+	
+	@Override
+	public List<Advertisement> findBySearch(String keyword)
+	{
+		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c WHERE c.title LIKE '%:keyword%' OR c.description LIKE '%:keyword%'", Advertisement.class);
+		q.setParameter("keyword", keyword);
+		return q.getResultList();
+	}
+	
 
 	@Override
 	public List<Advertisement> getAdvertisementsByUser(User user) {
