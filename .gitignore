@@ -16,6 +16,7 @@ local.properties
 .settings/
 .loadpath
 login.properties
+WebContent/doc/
 
 # External tool builders
 .externalToolBuilders/

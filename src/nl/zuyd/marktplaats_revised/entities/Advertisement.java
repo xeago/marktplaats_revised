@@ -8,6 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * The entity that represents an Advertisement. Mapped to the database with annotations, by JPA
+ * @author rick
+ *
+ */
 @Entity
 @Table(name="advertisements")
 public class Advertisement
@@ -33,6 +38,7 @@ public class Advertisement
 	
 	@Column(name="price", nullable=false, length=40)
 	private String price;
+
 	
 	public int getId()
 	{

@@ -12,6 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * The entity that represents a User. Mapped to the database with annotations, by JPA
+ * @author rick
+ *
+ */
 @Stateful
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }))
