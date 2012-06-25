@@ -21,6 +21,10 @@ body {
 	text-align: center;
 }
 
+#search_advert_bar {
+	float: right;
+}
+
 #container {
 	position: relative;
 	border: solid 1px black;

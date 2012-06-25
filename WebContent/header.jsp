@@ -21,6 +21,12 @@
 				<a href="login.jsp">Login</a>
 			</c:otherwise>
 		</c:choose>
+		
+		<div id="search_advert_bar">
+		<form method="post" action="advertisements">
+			<label>Search: <input type="text" name="advertisement_search_keyword" /></label>
+		</form>
+		</div>
 	</div>
 	<div id="container">
 		<h1>Marktplaats Revised</h1>

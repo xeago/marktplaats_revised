@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import sun.util.logging.resources.logging;
+
 import nl.zuyd.marktplaats_revised.entities.Advertisement;
 import nl.zuyd.marktplaats_revised.entities.User;
 
@@ -79,9 +81,16 @@ public class AdvertisementRepository implements IAdvertisementRepository
 	@Override
 	public List<Advertisement> findBySearch(String keyword)
 	{
-		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c WHERE c.title LIKE '%:keyword%' OR c.description LIKE '%:keyword%'", Advertisement.class);
-		q.setParameter("keyword", keyword);
-		return q.getResultList();
+		TypedQuery<Advertisement> q = this.em.createQuery("SELECT c FROM Advertisement c WHERE UPPER(c.title) LIKE UPPER( :keyword ) OR UPPER(c.description) LIKE UPPER( :keyword )", Advertisement.class);
+		q.setParameter("keyword", "%" + keyword + "%");
+		
+		System.out.print("ophalen...");
+		
+		List<Advertisement> result = q.getResultList();
+
+		System.out.print("opgehaald: " + result.size());
+		
+		return result;
 	}
 	
 

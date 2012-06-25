@@ -26,7 +26,6 @@ public class AdvertisementServlet extends HttpServlet
 	IAdvertisementRepository advertRepo;
 	@EJB
 	IUserRepository userRepo;
-
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -82,13 +81,31 @@ public class AdvertisementServlet extends HttpServlet
 		}
 		else
 		{
+			String keywords;
+			if ((keywords = request
+					.getParameter("advertisement_search_keyword")) != null)
+			{
+				// get by keywords
+				List<Advertisement> searchResult = this.advertRepo
+						.findBySearch(keywords);
+				
+				request.setAttribute("Advertisements", searchResult);
+				
+				this.getServletContext()
+						.getRequestDispatcher("/ListAdvertisements.jsp")
+						.forward(request, response);
+			}
+			else
+			{ // just show all
 			
-			// else list all advertisements and forward to the
-			// ListAdvertisements.jsp to display all advertisements
-			request.setAttribute("Advertisements", l);
-			this.getServletContext()
-					.getRequestDispatcher("/ListAdvertisements.jsp")
-					.forward(request, response);
+				// else list all advertisements and forward to the
+				// ListAdvertisements.jsp to display all advertisements
+				request.setAttribute("Advertisements", l);
+				
+				this.getServletContext()
+						.getRequestDispatcher("/ListAdvertisements.jsp")
+						.forward(request, response);
+			}
 		}
 	}
 }
